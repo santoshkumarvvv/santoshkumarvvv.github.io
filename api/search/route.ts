@@ -89,9 +89,9 @@ const MINI_INDEX: SearchDocument[] = [
     id: 'doc-9',
     title: 'Progressive Web App (PWA) Offline Service Worker',
     url: 'https://santoshkumarvvv.github.io/',
-    snippet: 'Versioned v2 offline caching architecture providing network-first HTML navigation and cache-first static asset delivery.',
+    snippet: 'Versioned v5 offline caching architecture providing network-first HTML navigation and cache-first static asset delivery.',
     score: 1.0,
-    keywords: 'pwa service worker offline cache v2 manifest apple-touch-icon web app performance'
+    keywords: 'pwa service worker offline cache v5 manifest apple-touch-icon web app performance'
   },
   {
     id: 'doc-10',

@@ -362,6 +362,8 @@
     currentResults = results;
     selectedIndex = results.length > 0 ? 0 : -1;
 
+    const initialDiv = document.createElement('div');
+    initialDiv.style.cssText = 'padding: 24px; text-align: center; color: #71717a; font-size: 13px;';
     if (!searchInput.value.trim()) {
       resultsBox.innerHTML = '';
       initialDiv.textContent = `Type anything to search across ${searchIndex.length} real indexed pages...`;
