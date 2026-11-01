@@ -89,12 +89,14 @@
     --color-emerald-400: oklch(76.5% .177 163.223);
     --color-emerald-500: oklch(69.6% .17 162.48);
     --color-emerald-600: oklch(59.6% .145 163.225);
+    --color-emerald-800: oklch(43.2% .095 166.913);
     --color-emerald-900: oklch(37.8% .077 168.94);
     --color-emerald-950: oklch(26.2% .051 172.552);
     --color-cyan-200: oklch(91.7% .08 205.041);
     --color-cyan-300: oklch(86.5% .127 207.078);
     --color-cyan-400: oklch(78.9% .154 211.53);
     --color-cyan-500: oklch(71.5% .143 215.221);
+    --color-cyan-600: oklch(60.9% .126 221.723);
     --color-cyan-800: oklch(45% .085 224.283);
     --color-cyan-950: oklch(30.2% .056 229.695);
     --color-blue-300: oklch(80.9% .105 251.813);
@@ -672,6 +674,10 @@
     height: calc(var(--spacing) * 1.5);
   }
 
+  .h-2 {
+    height: calc(var(--spacing) * 2);
+  }
+
   .h-3 {
     height: calc(var(--spacing) * 3);
   }
@@ -742,6 +748,10 @@
 
   .w-1\.5 {
     width: calc(var(--spacing) * 1.5);
+  }
+
+  .w-2 {
+    width: calc(var(--spacing) * 2);
   }
 
   .w-3 {
@@ -1306,6 +1316,10 @@
     }
   }
 
+  .bg-cyan-600 {
+    background-color: var(--color-cyan-600);
+  }
+
   .bg-cyan-950 {
     background-color: var(--color-cyan-950);
   }
@@ -1401,6 +1415,16 @@
   @supports (color: color-mix(in lab, red, red)) {
     .bg-zinc-100\/60 {
       background-color: color-mix(in oklab, var(--color-zinc-100) 60%, transparent);
+    }
+  }
+
+  .bg-zinc-100\/80 {
+    background-color: #f4f4f5cc;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-zinc-100\/80 {
+      background-color: color-mix(in oklab, var(--color-zinc-100) 80%, transparent);
     }
   }
 
@@ -1885,6 +1909,14 @@
     color: var(--color-cyan-400);
   }
 
+  .text-cyan-500 {
+    color: var(--color-cyan-500);
+  }
+
+  .text-cyan-600 {
+    color: var(--color-cyan-600);
+  }
+
   .text-emerald-300 {
     color: var(--color-emerald-300);
   }
@@ -1895,6 +1927,10 @@
 
   .text-emerald-600 {
     color: var(--color-emerald-600);
+  }
+
+  .text-emerald-800 {
+    color: var(--color-emerald-800);
   }
 
   .text-white {
@@ -2125,20 +2161,20 @@
     }
   }
 
-  .selection\:bg-blue-600 ::selection {
-    background-color: var(--color-blue-600);
+  .selection\:bg-cyan-500 ::selection {
+    background-color: var(--color-cyan-500);
   }
 
-  .selection\:bg-blue-600::selection {
-    background-color: var(--color-blue-600);
+  .selection\:bg-cyan-500::selection {
+    background-color: var(--color-cyan-500);
   }
 
-  .selection\:text-white ::selection {
-    color: var(--color-white);
+  .selection\:text-black ::selection {
+    color: var(--color-black);
   }
 
-  .selection\:text-white::selection {
-    color: var(--color-white);
+  .selection\:text-black::selection {
+    color: var(--color-black);
   }
 
   @media (hover: hover) {
@@ -2162,6 +2198,10 @@
       }
     }
 
+    .hover\:border-cyan-500:hover {
+      border-color: var(--color-cyan-500);
+    }
+
     .hover\:border-cyan-500\/40:hover {
       border-color: #00b7d766;
     }
@@ -2180,8 +2220,22 @@
       background-color: var(--color-cyan-400);
     }
 
+    .hover\:bg-cyan-500:hover {
+      background-color: var(--color-cyan-500);
+    }
+
     .hover\:bg-emerald-400:hover {
       background-color: var(--color-emerald-400);
+    }
+
+    .hover\:bg-emerald-500\/20:hover {
+      background-color: #00bb7f33;
+    }
+
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-emerald-500\/20:hover {
+        background-color: color-mix(in oklab, var(--color-emerald-500) 20%, transparent);
+      }
     }
 
     .hover\:bg-emerald-900\/60:hover {
@@ -2262,6 +2316,14 @@
 
     .hover\:text-blue-600:hover {
       color: var(--color-blue-600);
+    }
+
+    .hover\:text-cyan-500:hover {
+      color: var(--color-cyan-500);
+    }
+
+    .hover\:text-emerald-500:hover {
+      color: var(--color-emerald-500);
     }
 
     .hover\:text-white:hover {
@@ -2582,6 +2644,14 @@
     color: var(--color-blue-400);
   }
 
+  .dark\:text-cyan-400:where(.dark, .dark *) {
+    color: var(--color-cyan-400);
+  }
+
+  .dark\:text-emerald-300:where(.dark, .dark *) {
+    color: var(--color-emerald-300);
+  }
+
   .dark\:text-emerald-400:where(.dark, .dark *) {
     color: var(--color-emerald-400);
   }
@@ -2653,6 +2723,10 @@
 
     .dark\:hover\:text-blue-400:where(.dark, .dark *):hover {
       color: var(--color-blue-400);
+    }
+
+    .dark\:hover\:text-white:where(.dark, .dark *):hover {
+      color: var(--color-white);
     }
 
     .dark\:hover\:text-zinc-100:where(.dark, .dark *):hover {

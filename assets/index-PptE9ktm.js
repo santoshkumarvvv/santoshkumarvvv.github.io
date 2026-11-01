@@ -11659,6 +11659,34 @@ var ExternalLink = createLucideIcon("external-link", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var FileText = createLucideIcon("file-text", [
+	["path", {
+		d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z",
+		key: "1rqfz7"
+	}],
+	["path", {
+		d: "M14 2v4a2 2 0 0 0 2 2h4",
+		key: "tnqrlb"
+	}],
+	["path", {
+		d: "M10 9H8",
+		key: "b1mrlr"
+	}],
+	["path", {
+		d: "M16 13H8",
+		key: "t4e002"
+	}],
+	["path", {
+		d: "M16 17H8",
+		key: "z1uh3a"
+	}]
+]);
+/**
+* @license lucide-react v0.546.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var FolderGit2 = createLucideIcon("folder-git-2", [
 	["path", {
 		d: "M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v5",
@@ -11731,6 +11759,38 @@ var Key = createLucideIcon("key", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var Languages = createLucideIcon("languages", [
+	["path", {
+		d: "m5 8 6 6",
+		key: "1wu5hv"
+	}],
+	["path", {
+		d: "m4 14 6-6 2-3",
+		key: "1k1g8d"
+	}],
+	["path", {
+		d: "M2 5h12",
+		key: "or177f"
+	}],
+	["path", {
+		d: "M7 2h1",
+		key: "1t2jsx"
+	}],
+	["path", {
+		d: "m22 22-5-10-5 10",
+		key: "don7ne"
+	}],
+	["path", {
+		d: "M14 18h6",
+		key: "1m8k6r"
+	}]
+]);
+/**
+* @license lucide-react v0.546.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var Layers = createLucideIcon("layers", [
 	["path", {
 		d: "M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z",
@@ -11745,6 +11805,23 @@ var Layers = createLucideIcon("layers", [
 		key: "kqbvx6"
 	}]
 ]);
+/**
+* @license lucide-react v0.546.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var Mail = createLucideIcon("mail", [["path", {
+	d: "m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7",
+	key: "132q7q"
+}], ["rect", {
+	x: "2",
+	y: "4",
+	width: "20",
+	height: "16",
+	rx: "2",
+	key: "izxlao"
+}]]);
 /**
 * @license lucide-react v0.546.0 - ISC
 *
@@ -13883,38 +13960,38 @@ var SaasGatewayConsole = () => {
 // src/components/SearchEmbedStudio.tsx
 var DEFAULT_CRAWLED_PAGES = [
 	{
-		url: "/docs/quickstart",
-		title: "Quickstart Guide — 60s Integration",
-		category: "Guide",
-		excerpt: "Paste the single script tag into your HTML head and start serving sub-2ms in-memory searches.",
+		url: "https://santoshkumarvvv.github.io/#architecture",
+		title: "SearchEmbed — 1-Line In-Memory Search Engine",
+		category: "Architecture",
+		excerpt: "14.8KB zero-dependency client-side search widget serving sub-2ms BM25 lexical queries.",
 		wordCount: 420
 	},
 	{
-		url: "/docs/security/scrypt",
-		title: "Scrypt KDF Key Generation & Auth",
+		url: "https://santoshkumarvvv.github.io/#works",
+		title: "Scrypt KDF Cryptographic Authentication",
 		category: "Security",
-		excerpt: "Cryptographic key derivation ensuring brute-force resilience against GPU and ASIC attacks.",
+		excerpt: "Deterministic key derivation ensuring brute-force resilience against GPU and ASIC attacks.",
 		wordCount: 890
 	},
 	{
-		url: "/docs/architecture/bm25",
-		title: "BM25 Term Saturation & Damerau-Levenshtein",
-		category: "Core Engine",
-		excerpt: "Lexical scoring with sub-millisecond typo tolerance without cloud database roundtrips.",
+		url: "https://github.com/santoshkumarvvv/search-hub-",
+		title: "SearchHub — Universal Federated Query Engine",
+		category: "Core Repo",
+		excerpt: "Universal developer search hub with edge caching, token-bucket debouncers, and Next.js.",
 		wordCount: 1250
 	},
 	{
-		url: "/pricing",
-		title: "Pricing & Lifetime Commercial Deal",
-		category: "Billing",
-		excerpt: "$39 Lifetime license with unbranded whitelabel embed options and priority SLA.",
-		wordCount: 310
+		url: "https://github.com/santoshkumarvvv/dev-showcase",
+		title: "Dev Showcase — Flutter Clean Architecture Engine",
+		category: "Mobile Engine",
+		excerpt: "120fps native mobile platform built with Clean Architecture, Riverpod, and GitHub Actions CI/CD.",
+		wordCount: 960
 	},
 	{
-		url: "/docs/web-workers",
-		title: "Web Worker Thread Offloading",
-		category: "Performance",
-		excerpt: "Zero UI freeze indexing. Heavy inverted index computation runs on background threads.",
+		url: "https://santoshkumarvvv.github.io/assets/Santosh_Kumar_Resume.pdf",
+		title: "Official Systems Engineering Resume (PDF)",
+		category: "Credentials",
+		excerpt: "Verified engineering credentials covering distributed systems, low-latency algorithms, and production stack.",
 		wordCount: 640
 	}
 ];
@@ -14657,6 +14734,12 @@ function App() {
 	const [repoSearch, setRepoSearch] = (0, import_react.useState)("");
 	const [isSyncingRepos, setIsSyncingRepos] = (0, import_react.useState)(false);
 	const [copiedCloneUrl, setCopiedCloneUrl] = (0, import_react.useState)(null);
+	const [isHindi, setIsHindi] = (0, import_react.useState)(false);
+	const [githubUser, setGithubUser] = (0, import_react.useState)({
+		public_repos: 5,
+		followers: 1,
+		public_gists: 0
+	});
 	(0, import_react.useEffect)(() => {
 		const root = document.documentElement;
 		if (isDark) root.classList.add("dark");
@@ -14669,6 +14752,15 @@ function App() {
 			if (response.ok) {
 				const data = await response.json();
 				if (Array.isArray(data) && data.length > 0) setRepos(data);
+			}
+			const userRes = await fetch("https://api.github.com/users/santoshkumarvvv");
+			if (userRes.ok) {
+				const u = await userRes.json();
+				if (u && typeof u.public_repos === "number") setGithubUser({
+					public_repos: u.public_repos,
+					followers: u.followers || 1,
+					public_gists: u.public_gists || 0
+				});
 			}
 		} catch {} finally {
 			setIsSyncingRepos(false);
@@ -14727,14 +14819,30 @@ function App() {
 								})
 							]
 						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "flex items-center shrink-0",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-								type: "button",
-								onClick: () => setIsCommandOpen(true),
-								className: "px-4 py-2 text-xs font-medium text-white bg-blue-600 hover:bg-blue-500 rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer",
-								children: "Command Menu ⌘K"
-							})
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center gap-2 shrink-0",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+									type: "button",
+									onClick: () => setIsHindi(!isHindi),
+									className: "px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100/80 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:border-cyan-500 transition-colors cursor-pointer flex items-center gap-1.5",
+									title: "Toggle Hindi / English Language",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Languages, { className: "w-3.5 h-3.5 text-cyan-500" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: isHindi ? "English" : "हिन्दी" })]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+									type: "button",
+									onClick: () => setIsDark(!isDark),
+									"aria-label": "Toggle canvas mode",
+									className: "p-1.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100/80 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer",
+									children: isDark ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sun, { className: "w-4 h-4 text-amber-400" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Moon, { className: "w-4 h-4 text-blue-600" })
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+									type: "button",
+									onClick: () => setIsCommandOpen(true),
+									className: "px-3 py-1.5 text-xs font-semibold text-white bg-cyan-600 hover:bg-cyan-500 rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer flex items-center gap-1.5",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "w-3.5 h-3.5" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "⌘K" })]
+								})
+							]
 						})
 					]
 				})
@@ -14748,65 +14856,115 @@ function App() {
 							className: "grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "lg:col-span-6 flex flex-col justify-between py-2",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "space-y-6",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "flex flex-wrap items-center gap-2 text-xs font-mono text-zinc-500 dark:text-zinc-400",
-											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "APPLICATION & SYSTEMS ENGINEER" }),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-													"aria-hidden": "true",
-													children: "·"
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "TYPESCRIPT & DART" }),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-													"aria-hidden": "true",
-													children: "·"
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "@SANTOSHKUMARVVV" })
-											]
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-											className: "text-4xl sm:text-5xl lg:text-[3.35rem] font-bold tracking-tight text-zinc-900 dark:text-zinc-100 leading-[1.08]",
-											style: { textWrap: "balance" },
-											children: "Engineering high-velocity web systems and native mobile applications."
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-xl",
-											children: "Focused on federated search architectures, deterministic TypeScript & React 19 interfaces, 120fps Dart/Flutter mobile engines, and automated GitHub Actions release pipelines."
-										})
-									]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "pt-8 mt-8 border-t border-zinc-200 dark:border-zinc-800/80 flex flex-wrap items-center justify-between gap-4",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex flex-wrap items-center gap-3",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "space-y-6",
 										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
-												href: "#architecture",
-												className: "px-5 py-2.5 text-xs font-bold text-zinc-950 bg-gradient-to-r from-cyan-400 to-cyan-300 hover:from-cyan-300 hover:to-cyan-200 rounded-lg transition-all shadow-md shadow-cyan-500/20 whitespace-nowrap shrink-0 flex items-center gap-1.5",
-												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "⚡ SearchEmbed Studio (New SaaS)" })
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "flex flex-wrap items-center gap-2 text-xs font-mono text-zinc-500 dark:text-zinc-400",
+												children: [
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+														className: "text-cyan-600 dark:text-cyan-400 font-bold",
+														children: isHindi ? "नमस्ते · सॉफ्टवेयर सिस्टम्स इंजीनियर" : "SYSTEMS & SEARCH ENGINE ARCHITECT"
+													}),
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+														"aria-hidden": "true",
+														children: "·"
+													}),
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "TYPESCRIPT & DART" }),
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+														"aria-hidden": "true",
+														children: "·"
+													}),
+													/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "@SANTOSHKUMARVVV" })
+												]
 											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
-												href: "#works",
-												className: "px-5 py-2.5 text-xs font-medium text-white bg-blue-600 hover:bg-blue-500 rounded-lg transition-colors whitespace-nowrap shrink-0",
-												children: "Explore Selected Works"
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+												className: "text-4xl sm:text-5xl lg:text-[3.35rem] font-bold tracking-tight text-zinc-900 dark:text-zinc-100 leading-[1.08]",
+												style: { textWrap: "balance" },
+												children: isHindi ? "हाई-परफॉर्मेंस इन-मेमोरी सर्च इंजन और 120fps नेटिव मोबाइल ऐप्स का निर्माण।" : "Engineering high-velocity web systems, in-memory search engines, and native mobile apps."
 											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-												href: "https://github.com/santoshkumarvvv",
-												target: "_blank",
-												rel: "noopener noreferrer",
-												className: "inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-medium text-zinc-800 dark:text-zinc-200 bg-zinc-200/80 dark:bg-zinc-900 hover:bg-zinc-300/70 dark:hover:bg-zinc-800 border border-zinc-300 dark:border-zinc-800 rounded-lg transition-colors whitespace-nowrap shrink-0",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "GitHub Profile" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { className: "w-3.5 h-3.5" })]
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+												className: "text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-xl",
+												children: isHindi ? "सब-2ms BM25 लेक्सिकल सर्च कोर, क्रिप्टोग्राफिक स्क्रिप्ट (Scrypt KDF) ऑथेंटिकेशन, और ऑटोमेटेड गिटहब सीआई/सीडी पाइपलाइन्स।" : "Architecting sub-2ms in-memory BM25 search engines, Scrypt KDF cryptographic authentication, and 120fps native Flutter mobile systems with automated CI/CD."
 											})
 										]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-										type: "button",
-										onClick: () => setIsDark(!isDark),
-										className: "inline-flex items-center gap-2 px-3.5 py-2 text-xs font-mono text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 border border-zinc-200 dark:border-zinc-800 rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer",
-										children: isDark ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sun, { className: "w-3.5 h-3.5 text-amber-400" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Light Canvas" })] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Moon, { className: "w-3.5 h-3.5 text-blue-600" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Dark Canvas" })] })
-									})]
-								})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										className: "pt-8 mt-8 border-t border-zinc-200 dark:border-zinc-800/80 flex flex-wrap items-center justify-between gap-4",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "flex flex-wrap items-center gap-3",
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+													href: "#architecture",
+													className: "px-5 py-2.5 text-xs font-bold text-zinc-950 bg-gradient-to-r from-cyan-400 to-cyan-300 hover:from-cyan-300 hover:to-cyan-200 rounded-lg transition-all shadow-md shadow-cyan-500/20 whitespace-nowrap shrink-0 flex items-center gap-1.5",
+													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "⚡ Try Live Search Hub" })
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+													href: "#works",
+													className: "px-5 py-2.5 text-xs font-medium text-white bg-blue-600 hover:bg-blue-500 rounded-lg transition-colors whitespace-nowrap shrink-0",
+													children: "Explore Selected Works"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+													href: "./assets/Santosh_Kumar_Resume.pdf",
+													download: "Santosh_Kumar_Resume.pdf",
+													className: "inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-medium text-emerald-800 dark:text-emerald-300 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 rounded-lg transition-colors whitespace-nowrap shrink-0",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, { className: "w-3.5 h-3.5 text-emerald-400" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Download CV / Resume" })]
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+													href: "mailto:kumasantosh947@gmail.com",
+													className: "inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-medium text-zinc-800 dark:text-zinc-200 bg-zinc-200/80 dark:bg-zinc-900 hover:bg-zinc-300/70 dark:hover:bg-zinc-800 border border-zinc-300 dark:border-zinc-800 rounded-lg transition-colors whitespace-nowrap shrink-0",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Mail, { className: "w-3.5 h-3.5 text-cyan-400" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Contact" })]
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+													href: "https://x.com/SantoshKum86044",
+													target: "_blank",
+													rel: "noopener noreferrer",
+													className: "inline-flex items-center gap-1.5 px-3 py-2.5 text-xs font-mono text-zinc-600 dark:text-zinc-400 hover:text-cyan-500 border border-zinc-200 dark:border-zinc-800 rounded-lg transition-colors whitespace-nowrap shrink-0",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "X (@SantoshKum86044)" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { className: "w-3 h-3" })]
+												})
+											]
+										})
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "mt-6 p-3 rounded-xl border border-zinc-200 dark:border-zinc-800/80 bg-zinc-100/60 dark:bg-zinc-900/60 flex flex-wrap items-center justify-between gap-3 text-xs font-mono",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "flex items-center gap-2",
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "w-2 h-2 rounded-full bg-emerald-500 animate-pulse" }),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "text-zinc-700 dark:text-zinc-300 font-semibold",
+													children: "GitHub Status:"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+													className: "text-cyan-600 dark:text-cyan-400",
+													children: [githubUser.public_repos, " Clean Repositories"]
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "text-zinc-400",
+													children: "·"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "text-emerald-600 dark:text-emerald-400 font-semibold",
+													children: "CodeQL Verified (0 Alerts)"
+												})
+											]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "flex items-center gap-3 text-zinc-500 text-[11px]",
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "P99 Query: <1.8ms" }),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "·" }),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+													href: "https://github.com/santoshkumarvvv",
+													target: "_blank",
+													rel: "noopener noreferrer",
+													className: "hover:text-cyan-500 flex items-center gap-1",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "GitHub Profile" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { className: "w-3 h-3" })]
+												})
+											]
+										})]
+									})
+								]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 								className: "lg:col-span-6 flex",
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HeroArchitectureVisual, {})
@@ -15131,29 +15289,40 @@ function App() {
 				className: "border-t border-zinc-200 dark:border-zinc-800/80 py-10 px-6",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 dark:text-zinc-400",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Santosh Kumar (@santoshkumarvvv) · Systems & Application Engineering Portfolio" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center gap-6",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Santosh Kumar (@santoshkumarvvv) · Systems & Application Engineering Portfolio · 100% Real Live Stack" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex flex-wrap items-center gap-5",
 						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+								href: "https://x.com/SantoshKum86044",
+								target: "_blank",
+								rel: "noopener noreferrer",
+								className: "hover:text-cyan-500 transition-colors",
+								children: "X (@SantoshKum86044)"
+							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
 								href: "https://github.com/santoshkumarvvv",
 								target: "_blank",
 								rel: "noopener noreferrer",
-								className: "hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors",
+								className: "hover:text-cyan-500 transition-colors",
 								children: "GitHub Profile"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+								href: "mailto:kumasantosh947@gmail.com",
+								className: "hover:text-cyan-500 transition-colors",
+								children: "Contact Email"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+								href: "./assets/Santosh_Kumar_Resume.pdf",
+								download: "Santosh_Kumar_Resume.pdf",
+								className: "hover:text-emerald-500 font-semibold transition-colors",
+								children: "Resume (PDF)"
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
 								href: "https://github.com/santoshkumarvvv/search-hub-",
 								target: "_blank",
 								rel: "noopener noreferrer",
-								className: "hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors",
+								className: "hover:text-cyan-500 transition-colors",
 								children: "Search Hub"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
-								href: "https://github.com/santoshkumarvvv/dev-showcase",
-								target: "_blank",
-								rel: "noopener noreferrer",
-								className: "hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors",
-								children: "Dev Showcase"
 							})
 						]
 					})]
