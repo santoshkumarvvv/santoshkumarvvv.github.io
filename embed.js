@@ -479,12 +479,6 @@
     });
   }
 
-  // Whitelabel check: if paid key, hide footer branding
-  if (siteKey && (siteKey.startsWith('sh_ltd_') || siteKey.startsWith('sh_pro_'))) {
-    const mark = modalBackdrop.querySelector('#se-whitelabel-mark');
-    if (mark) mark.style.display = 'none';
-  }
-
   // Public API
   window.SearchEmbed = {
     open: openModal,
