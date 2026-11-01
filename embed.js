@@ -19,7 +19,6 @@
     return scripts[scripts.length - 1];
   })();
 
-  const siteKey = currentScript?.getAttribute('data-site-key') || 'sh_live_demo';
   const customAccent = currentScript?.getAttribute('data-accent') || '#EF9F27';
   const placeholderText = currentScript?.getAttribute('data-placeholder') || 'Search real projects, architectures, and docs...';
   const position = currentScript?.getAttribute('data-position') || 'bottom-right';

@@ -24,7 +24,7 @@ const MINI_INDEX: SearchDocument[] = [
   {
     id: 'doc-1',
     title: 'SearchHub Federated BM25 Search Engine',
-    url: 'https://search-hub-pearl.vercel.app/',
+    url: 'https://github.com/santoshkumarvvv/search-hub-',
     snippet: 'Universal developer search hub with low-latency in-memory BM25 lexical search and Damerau-Levenshtein typo tolerance.',
     score: 1.0,
     keywords: 'searchhub federated bm25 search engine typescript nextjs inverted index lexical ranking typo tolerance'
@@ -88,10 +88,10 @@ const MINI_INDEX: SearchDocument[] = [
   {
     id: 'doc-9',
     title: 'Progressive Web App (PWA) Offline Service Worker',
-    url: 'https://santoshkumarvvv.github.io/sw.js',
-    snippet: 'Versioned v2 service worker providing network-first HTML navigation and cache-first static asset delivery.',
+    url: 'https://santoshkumarvvv.github.io/',
+    snippet: 'Versioned v2 offline caching architecture providing network-first HTML navigation and cache-first static asset delivery.',
     score: 1.0,
-    keywords: 'pwa service worker sw.js offline cache v2 manifest apple-touch-icon web app performance'
+    keywords: 'pwa service worker offline cache v2 manifest apple-touch-icon web app performance'
   },
   {
     id: 'doc-10',
