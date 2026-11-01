@@ -196,7 +196,7 @@ const I18N = {
     footerResume: 'Resume (PDF)',
     footerComms: 'Direct Comms',
     formErrorMissing: 'Please provide both your email address and message.',
-    formErrorNotConfigured: 'Message could not be sent. Form key is not configured yet.',
+    formErrorSendFailed: 'Message could not be sent. Please try again.',
     statReposLabel: 'PUBLIC REPOSITORIES',
     statReposSub: 'Active open source engines',
     statStarsLabel: 'TOTAL STARGAZERS',
@@ -253,7 +253,7 @@ const I18N = {
     footerResume: 'रिज्यूमे (PDF)',
     footerComms: 'सीधा संपर्क',
     formErrorMissing: 'कृपया अपना ईमेल और संदेश दोनों दें।',
-    formErrorNotConfigured: 'संदेश नहीं भेजा जा सका। फॉर्म कुंजी अभी कॉन्फ़िगर नहीं है।',
+    formErrorSendFailed: 'संदेश नहीं भेजा जा सका। कृपया पुनः प्रयास करें।',
     statReposLabel: 'सार्वजनिक रिपॉजिटरी',
     statReposSub: 'सक्रिय ओपन-सोर्स इंजन',
     statStarsLabel: 'कुल स्टार',
@@ -315,7 +315,7 @@ export default function App() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
-          access_key: 'ACCESS_KEY_PENDING',
+          access_key: '071771e4-7323-4b6b',
           name: formState.name || 'Engineer Visitor',
           email: formState.email,
           subject: formState.subject || 'Portfolio Inquiry from santoshkumarvvv.github.io',
@@ -329,11 +329,11 @@ export default function App() {
         setFormState({ name: '', email: '', subject: '', message: '' });
       } else {
         setSendSuccess(false);
-        setSendError(t.formErrorNotConfigured);
+        setSendError(t.formErrorSendFailed);
       }
     } catch {
       setSendSuccess(false);
-      setSendError(t.formErrorNotConfigured);
+      setSendError(t.formErrorSendFailed);
     } finally {
       setIsSending(false);
     }
@@ -1095,17 +1095,6 @@ export default function App() {
 
         {/* Working Contact Form Section */}
         <section id="contact" className="max-w-7xl mx-auto px-6 py-16 border-t border-zinc-200 dark:border-zinc-800/80">
-          {/* Visible Web3Forms Access Key Setup Banner at Top of Contact Section */}
-          <div
-            role="status"
-            className="mb-8 p-4 rounded-xl border border-[#EF9F27]/40 bg-zinc-900 text-[#EF9F27] text-xs sm:text-sm font-mono flex items-center gap-3"
-          >
-            <AlertCircle className="w-4 h-4 text-[#EF9F27] shrink-0" />
-            <span>
-              Contact form is live — replace ACCESS_KEY_PENDING with your Web3Forms key from web3forms.com to receive submissions.
-            </span>
-          </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             {/* Left Column: Direct channels and bio */}
             <div className="lg:col-span-5 space-y-6">
@@ -1177,7 +1166,7 @@ export default function App() {
                   </div>
                 ) : (
                   <form onSubmit={handleContactSubmit} className="space-y-4">
-                    <input type="hidden" name="access_key" value="ACCESS_KEY_PENDING" />
+                    <input type="hidden" name="access_key" value="071771e4-7323-4b6b" />
                     <div className="flex items-center justify-between pb-2 border-b border-zinc-200 dark:border-zinc-800">
                       <span className="text-xs font-bold text-zinc-800 dark:text-zinc-200 uppercase tracking-wider">
                         {t.sendDirectHeader}
