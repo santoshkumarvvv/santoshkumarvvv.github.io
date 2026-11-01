@@ -272,7 +272,7 @@ export default function App() {
     public_repos: number;
     followers: number;
     public_gists: number;
-  }>({ public_repos: 5, followers: 1, public_gists: 0 });
+  }>({ public_repos: 4, followers: 1, public_gists: 0 });
 
   const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' });
   const [isSending, setIsSending] = useState(false);

@@ -11,6 +11,13 @@
   <script>
     (function() {
       try {
+        var storedTheme = localStorage.getItem('theme');
+        var isDark = storedTheme ? storedTheme === 'dark' : true;
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
         var lang = localStorage.getItem('lang');
         if (lang === 'hi') {
           document.documentElement.setAttribute('lang', 'hi');
@@ -21,10 +28,24 @@
     })();
   </script>
   <style>
+    :root {
+      --pre-bg: #fafafa;
+      --pre-surface: #ffffff;
+      --pre-text: #18181b;
+      --pre-muted: #52525b;
+      --pre-border: #e4e4e7;
+    }
+    html.dark {
+      --pre-bg: #09090b;
+      --pre-surface: #18181b;
+      --pre-text: #f4f4f5;
+      --pre-muted: #d4d4d8;
+      --pre-border: #27272a;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background-color: #09090b;
-      color: #f4f4f5;
+      background-color: var(--pre-bg);
+      color: var(--pre-text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       min-height: 100vh;
       display: flex;
@@ -38,7 +59,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: #18181b;
+      background: var(--pre-surface);
       border: 1px solid rgba(239, 159, 39, 0.4);
       color: #EF9F27;
       font-family: monospace;
@@ -58,10 +79,10 @@
       font-weight: 800;
       letter-spacing: -0.04em;
       margin-bottom: 12px;
-      color: #f4f4f5;
+      color: var(--pre-text);
     }
     p {
-      color: #a1a1aa;
+      color: var(--pre-muted);
       font-size: 1rem;
       max-width: 480px;
       line-height: 1.6;
