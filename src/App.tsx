@@ -155,6 +155,7 @@ const I18N = {
     role: 'SYSTEMS & SEARCH ENGINE ARCHITECT',
     heroTitle: 'Engineering high-velocity web systems, in-memory search engines, and native mobile apps.',
     heroDesc: 'Architecting low-latency in-memory BM25 lexical search engines, Scrypt KDF cryptographic authentication, and native Flutter mobile systems with automated CI/CD.',
+    heroLiveDemoBtn: 'Live Demo',
     viewSourceBtn: 'View Source',
     exploreWorksBtn: 'Explore Works',
     navWorks: 'Works',
@@ -212,6 +213,7 @@ const I18N = {
     role: 'सॉफ्टवेयर सिस्टम्स एवं सर्च इंजन आर्किटेक्ट',
     heroTitle: 'तेज़ इन-मेमोरी सर्च इंजन, क्रिप्टोग्राफी और नेटिव मोबाइल ऐप्स का निर्माण।',
     heroDesc: 'कम विलंबता वाले इन-मेमोरी BM25 सर्च कोर, Scrypt क्रिप्टोग्राफी और स्वचालित CI/CD के साथ नेटिव फ्लटर मोबाइल सिस्टम बनाता हूँ।',
+    heroLiveDemoBtn: 'लाइव डेमो',
     viewSourceBtn: 'सोर्स कोड देखें',
     exploreWorksBtn: 'प्रमुख प्रोजेक्ट्स देखें',
     navWorks: 'प्रमुख कार्य',
@@ -598,14 +600,23 @@ export default function App() {
                 </p>
               </div>
 
-              {/* Workspace Action Bar below hero copy — Strictly 2 Buttons */}
+              {/* Workspace Action Bar below hero copy */}
               <div className="pt-8 mt-8 border-t border-zinc-200 dark:border-zinc-800/80 flex flex-wrap items-center justify-between gap-4">
                 <div className="flex flex-wrap items-center gap-3">
+                  <a
+                    href="https://vvv-portfolio.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-5 py-2.5 text-xs font-bold text-zinc-950 bg-[#EF9F27] hover:bg-[#EF9F27]/90 rounded-lg transition-colors whitespace-nowrap shrink-0 flex items-center gap-1.5"
+                  >
+                    <span>{t.heroLiveDemoBtn}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
                   <a
                     href="https://github.com/santoshkumarvvv/search-hub-"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-5 py-2.5 text-xs font-bold text-zinc-950 bg-[#EF9F27] hover:bg-[#EF9F27]/90 rounded-lg transition-colors whitespace-nowrap shrink-0 flex items-center gap-1.5"
+                    className="px-5 py-2.5 text-xs font-semibold text-[#EF9F27] bg-transparent border border-[#EF9F27] hover:bg-[#EF9F27]/10 rounded-lg transition-colors whitespace-nowrap shrink-0 flex items-center gap-1.5"
                   >
                     <span>{t.viewSourceBtn}</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />

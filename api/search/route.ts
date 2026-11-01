@@ -24,7 +24,7 @@ const MINI_INDEX: SearchDocument[] = [
   {
     id: 'doc-1',
     title: 'SearchHub Federated BM25 Search Engine',
-    url: 'https://github.com/santoshkumarvvv/search-hub-',
+    url: 'https://vvv-portfolio.vercel.app',
     snippet: 'Universal developer search hub with low-latency in-memory BM25 lexical search and Damerau-Levenshtein typo tolerance.',
     score: 1.0,
     keywords: 'searchhub federated bm25 search engine typescript nextjs inverted index lexical ranking typo tolerance'
@@ -72,10 +72,10 @@ const MINI_INDEX: SearchDocument[] = [
   {
     id: 'doc-7',
     title: 'Santosh Kumar — Systems Engineering Command Hub',
-    url: 'https://santoshkumarvvv.github.io/',
+    url: 'https://vvv-portfolio.vercel.app',
     snippet: 'Interactive systems architecture portfolio, live GitHub repository telemetry, and BM25 query sandbox.',
     score: 1.0,
-    keywords: 'santosh kumar santoshkumarvvv portfolio systems architect react 19 vite tailwind css github pages'
+    keywords: 'santosh kumar santoshkumarvvv portfolio systems architect react 19 vite tailwind css github pages vercel'
   },
   {
     id: 'doc-8',
