@@ -1,5 +1,5 @@
 /**
- * SearchEmbed / DocPulse v1.0.0 — Zero-Dependency In-Browser Instant Search Widget
+ * SearchHub SearchEmbed v1.0.0 — Zero-Dependency In-Browser Instant Search Widget
  * (c) Santosh Kumar (https://github.com/santoshkumarvvv)
  * Distributed under MIT License
  * 

@@ -3,7 +3,7 @@
  * Santosh Kumar Systems & Search Engine Engineering Portfolio
  */
 
-const CACHE_NAME = 'santosh-systems-hub-v4';
+const CACHE_NAME = 'santosh-systems-hub-v5';
 
 const PRECACHE_ASSETS = [
   '/',
@@ -15,8 +15,11 @@ const PRECACHE_ASSETS = [
   '/assets/Santosh_Kumar_Resume.pdf',
   '/embed.js',
   '/404.html',
-  '/assets/index-Bd82sn1W.js',
-  '/assets/index-BOKtjCBh.css',
+  '/assets/index-Cz_rzgcP.js',
+  '/assets/vendor-react-B8VZQrSl.js',
+  '/assets/vendor-react-dom-Bl9RQzxE.js',
+  '/assets/rolldown-runtime-WkwZ5CU-.js',
+  '/assets/index-Ddp6gdE5.css',
   '/assets/bricolage-grotesque-latin-600-normal-Bw0J83-2.woff',
   '/assets/bricolage-grotesque-latin-600-normal-nxTgbNFE.woff2',
   '/assets/bricolage-grotesque-latin-700-normal-DvJDmrLu.woff',

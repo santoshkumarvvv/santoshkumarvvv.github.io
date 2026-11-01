@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import {
   ArrowUpRight,
   Search,
@@ -23,12 +23,25 @@ import {
   ProjectCaseStudy,
 } from './data/portfolioData';
 import { HeroArchitectureVisual, ProjectCardArtwork } from './components/ProjectVisuals';
-import { CommandPalette } from './components/CommandPalette';
-import { ArchitectureSimulator } from './components/ArchitectureSimulator';
-import { FederatedSearchSandbox } from './components/FederatedSearchSandbox';
-import { SaasGatewayConsole } from './components/SaasGatewayConsole';
-import { SearchEmbedStudio } from './components/SearchEmbedStudio';
-import { CaseStudyModal } from './components/CaseStudyModal';
+
+const SearchEmbedStudio = lazy(() =>
+  import('./components/SearchEmbedStudio').then((m) => ({ default: m.SearchEmbedStudio }))
+);
+const SaasGatewayConsole = lazy(() =>
+  import('./components/SaasGatewayConsole').then((m) => ({ default: m.SaasGatewayConsole }))
+);
+const FederatedSearchSandbox = lazy(() =>
+  import('./components/FederatedSearchSandbox').then((m) => ({ default: m.FederatedSearchSandbox }))
+);
+const ArchitectureSimulator = lazy(() =>
+  import('./components/ArchitectureSimulator').then((m) => ({ default: m.ArchitectureSimulator }))
+);
+const CommandPalette = lazy(() =>
+  import('./components/CommandPalette').then((m) => ({ default: m.CommandPalette }))
+);
+const CaseStudyModal = lazy(() =>
+  import('./components/CaseStudyModal').then((m) => ({ default: m.CaseStudyModal }))
+);
 
 interface GitHubRepo {
   id: number;
@@ -48,12 +61,12 @@ const REPO_METADATA: Record<string, { tech_stack: string[]; live_demo?: string; 
   'search-hub-': {
     tech_stack: ['TypeScript', 'Next.js 15', 'BM25 Engine', 'Web Workers', 'Tailwind CSS', 'Vercel'],
     live_demo: 'https://github.com/santoshkumarvvv/search-hub-',
-    description: 'High-velocity universal developer search engine indexing multi-source technical documentation with Okapi BM25 lexical ranking, Damerau-Levenshtein typo tolerance, and token-bucket debouncing.'
+    description: 'Universal developer search engine indexing multi-source technical documentation with Okapi BM25 lexical ranking, Damerau-Levenshtein typo tolerance, and token-bucket debouncing.'
   },
   'dev-showcase': {
     tech_stack: ['Dart', 'Flutter', 'Riverpod', 'Clean Architecture', 'CI/CD Actions'],
     live_demo: 'https://github.com/santoshkumarvvv/dev-showcase#architecture',
-    description: 'High-performance 120fps native Flutter mobile platform architected with Domain-Driven Design (DDD), Clean Architecture, Riverpod state management, and automated GitHub Actions CI/CD.'
+    description: 'Native Flutter mobile platform architected with Domain-Driven Design (DDD), Clean Architecture, Riverpod state management, and automated GitHub Actions CI/CD.'
   },
   'search-hub-app': {
     tech_stack: ['Dart', 'Flutter', 'SQLite', 'Offline Cache', 'Cross-Platform'],
@@ -141,8 +154,8 @@ const I18N = {
     namaste: 'नमस्ते (Namaste) · Welcome to Santosh Kumar\'s Systems & Search Hub',
     role: 'SYSTEMS & SEARCH ENGINE ARCHITECT',
     heroTitle: 'Engineering high-velocity web systems, in-memory search engines, and native mobile apps.',
-    heroDesc: 'Architecting low-latency in-memory BM25 lexical search engines, Scrypt KDF cryptographic authentication, and 120fps native Flutter mobile systems with automated CI/CD.',
-    tryDemoBtn: 'Try Live Search Hub',
+    heroDesc: 'Architecting low-latency in-memory BM25 lexical search engines, Scrypt KDF cryptographic authentication, and native Flutter mobile systems with automated CI/CD.',
+    viewSourceBtn: 'View Source',
     exploreWorksBtn: 'Explore Works',
     navWorks: 'Works',
     navEmbed: 'SearchEmbed',
@@ -165,12 +178,12 @@ const I18N = {
     reposTitle: 'Production Repositories & Open Source Systems',
     syncBtn: 'Sync GitHub API',
     syncingBtn: 'Syncing API...',
-    liveDemoBtn: 'Live Demo',
+    liveDemoBtn: 'View Source',
     cloneBtn: 'Clone',
     clonedBtn: 'Cloned',
     contactHeadline: 'Let\'s Build Systems That Scale',
     contactTitle: 'Direct Contact & Engineering Inquiries',
-    contactDesc: 'Whether you need low-latency in-memory search engines, Scrypt KDF security architecture, or 120fps native mobile engineering — drop a message directly to Santosh.',
+    contactDesc: 'Whether you need low-latency in-memory search engines, Scrypt KDF security architecture, or native mobile engineering — drop a message directly to Santosh.',
     sendDirectHeader: 'Send Direct Message',
     labelName: 'Your Name',
     labelEmail: 'Your Email',
@@ -179,7 +192,7 @@ const I18N = {
     sendBtn: 'Send Message Now',
     sendingBtn: 'Transmitting Message...',
     footerTitle: 'Santosh Kumar (@santoshkumarvvv) · Systems & Application Engineering',
-    footerSub: '100% Real Live Stack · Open Source · Okapi BM25 · Native Flutter · CI/CD Verified',
+    footerSub: 'Open Source · Okapi BM25 · Native Flutter · CI/CD Verified',
     footerResume: 'Resume (PDF)',
     footerComms: 'Direct Comms'
   },
@@ -187,9 +200,9 @@ const I18N = {
     langBtn: 'हिंदी / English',
     namaste: 'नमस्ते (Namaste) · Welcome to Santosh Kumar\'s Systems & Search Hub',
     role: 'सॉफ्टवेयर सिस्टम्स एवं सर्च इंजन आर्किटेक्ट',
-    heroTitle: 'हाई-परफॉर्मेंस इन-मेमोरी सर्च इंजन और 120fps नेटिव मोबाइल ऐप्स का निर्माण।',
-    heroDesc: 'कम-विलंबता इन-मेमोरी BM25 लेक्सिकल सर्च कोर, स्क्रिप्ट (Scrypt KDF) क्रिप्टोग्राफी और स्वचालित CI/CD पाइपलाइनों के साथ 120fps नेटिव फ्लटर मोबाइल सिस्टम।',
-    tryDemoBtn: 'लाइव सर्च हब देखें',
+    heroTitle: 'हाई-परफॉर्मेंस इन-मेमोरी सर्च इंजन और नेटिव मोबाइल ऐप्स का निर्माण।',
+    heroDesc: 'कम-विलंबता इन-मेमोरी BM25 लेक्सिकल सर्च कोर, स्क्रिप्ट (Scrypt KDF) क्रिप्टोग्राफी और स्वचालित CI/CD पाइपलाइनों के साथ नेटिव फ्लटर मोबाइल सिस्टम।',
+    viewSourceBtn: 'सोर्स कोड देखें',
     exploreWorksBtn: 'प्रमुख प्रोजेक्ट्स देखें',
     navWorks: 'प्रमुख कार्य',
     navEmbed: 'सर्च एम्बेड',
@@ -212,12 +225,12 @@ const I18N = {
     reposTitle: 'प्रोडक्शन रिपॉजिटरी और ओपन-सोर्स सिस्टम्स',
     syncBtn: 'गिटहब API सिंक करें',
     syncingBtn: 'सिंक हो रहा है...',
-    liveDemoBtn: 'लाइव डेमो',
+    liveDemoBtn: 'सोर्स कोड देखें',
     cloneBtn: 'क्लोन',
     clonedBtn: 'क्लोन किया गया',
     contactHeadline: 'आइए स्केलेबल सिस्टम्स का निर्माण करें',
     contactTitle: 'सीधा संपर्क एवं तकनीकी परामर्श',
-    contactDesc: 'चाहे आपको कम-विलंबता इन-मेमोरी सर्च इंजन, Scrypt KDF सुरक्षा आर्किटेक्चर, या 120fps नेटिव मोबाइल इंजीनियरिंग की आवश्यकता हो — सीधे संतोष को संदेश भेजें।',
+    contactDesc: 'चाहे आपको कम-विलंबता इन-मेमोरी सर्च इंजन, Scrypt KDF सुरक्षा आर्किटेक्चर, या नेटिव मोबाइल इंजीनियरिंग की आवश्यकता हो — सीधे संतोष को संदेश भेजें।',
     sendDirectHeader: 'सीधा संदेश भेजें',
     labelName: 'आपका नाम',
     labelEmail: 'आपका ईमेल',
@@ -226,7 +239,7 @@ const I18N = {
     sendBtn: 'अभी संदेश भेजें',
     sendingBtn: 'संदेश भेजा जा रहा है...',
     footerTitle: 'संतोष कुमार (@santoshkumarvvv) · सिस्टम्स और एप्लिकेशन इंजीनियरिंग',
-    footerSub: '100% रियल लाइव स्टैक · ओपन सोर्स · ओकापी BM25 · नेटिव फ्लटर · CI/CD सत्यापित',
+    footerSub: 'ओपन सोर्स · ओकापी BM25 · नेटिव फ्लटर · CI/CD सत्यापित',
     footerResume: 'रिज्यूमे (PDF)',
     footerComms: 'सीधा संपर्क'
   }
@@ -274,6 +287,7 @@ export default function App() {
     }
     setIsSending(true);
     setSendError(null);
+    setSendSuccess(false);
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -292,12 +306,12 @@ export default function App() {
         setSendSuccess(true);
         setFormState({ name: '', email: '', subject: '', message: '' });
       } else {
-        setSendSuccess(true);
-        setFormState({ name: '', email: '', subject: '', message: '' });
+        setSendSuccess(false);
+        setSendError('Message could not be sent. Form key is not configured yet.');
       }
     } catch {
-      setSendSuccess(true);
-      setFormState({ name: '', email: '', subject: '', message: '' });
+      setSendSuccess(false);
+      setSendError('Message could not be sent. Form key is not configured yet.');
     } finally {
       setIsSending(false);
     }
@@ -322,6 +336,17 @@ export default function App() {
       localStorage.setItem('lang', langCode);
     } catch {}
   }, [isHindi]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setIsCommandOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const fetchLiveGitHubRepos = async () => {
     setIsSyncingRepos(true);
@@ -557,12 +582,12 @@ export default function App() {
                 <div className="flex flex-wrap items-center gap-3">
                   <a
                     href="https://github.com/santoshkumarvvv/search-hub-"
-                    title="Live demo coming soon"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-5 py-2.5 text-xs font-bold text-zinc-950 bg-[#EF9F27] hover:bg-[#EF9F27]/90 rounded-lg transition-colors whitespace-nowrap shrink-0 flex items-center gap-1.5"
                   >
-                    <span>{t.tryDemoBtn}</span>
+                    <span>{t.viewSourceBtn}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>
                   <a
                     href="#works"
@@ -614,7 +639,7 @@ export default function App() {
                   <span className="text-zinc-300 font-semibold">CodeQL Verified (0 Alerts)</span>
                 </div>
                 <div className="flex items-center gap-3 text-zinc-600 dark:text-zinc-400 text-[11px]">
-                  <span>P99 Query: &lt;1.8ms</span>
+                  <span>Lexical Core: In-Memory BM25</span>
                   <span>·</span>
                   <a href="https://github.com/santoshkumarvvv" target="_blank" rel="noopener noreferrer" className="hover:text-[#EF9F27] flex items-center gap-1">
                     <span>GitHub Profile</span>
@@ -630,26 +655,26 @@ export default function App() {
             </div>
           </div>
 
-          {/* Full-width 4-Column Quantitative KPI Strip below Hero Split */}
+          {/* Full-width 4-Column Qualitative Architecture Strip below Hero Split */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-10 pt-8 border-t border-zinc-200 dark:border-zinc-800/80">
             <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/80">
               <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400 block">
-                FEDERATED QUERY LATENCY
+                SEARCH ARCHITECTURE
               </span>
-              <span className="text-2xl sm:text-3xl font-bold font-mono text-zinc-900 dark:text-zinc-100 mt-1.5 block tabular-nums">
-                38 ms P95
+              <span className="text-xl sm:text-2xl font-bold font-mono text-zinc-900 dark:text-zinc-100 mt-1.5 block">
+                In-Memory BM25
               </span>
               <span className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 block">
-                Edge-indexed Search Hub router
+                Low-latency lexical &amp; typo ranking
               </span>
             </div>
 
             <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/80">
               <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400 block">
-                PRODUCTION TEST COVERAGE
+                CI/CD VERIFICATION
               </span>
-              <span className="text-2xl sm:text-3xl font-bold font-mono text-zinc-900 dark:text-zinc-100 mt-1.5 block tabular-nums">
-                96.4% AST
+              <span className="text-xl sm:text-2xl font-bold font-mono text-zinc-900 dark:text-zinc-100 mt-1.5 block">
+                AST &amp; Static Lint
               </span>
               <span className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 block">
                 Automated GitHub Actions matrix
@@ -658,25 +683,25 @@ export default function App() {
 
             <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/80">
               <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400 block">
-                LIGHTHOUSE AUDIT SCORE
+                FRONTEND PIPELINE
               </span>
-              <span className="text-2xl sm:text-3xl font-bold font-mono text-[#EF9F27] mt-1.5 block tabular-nums">
-                99 / 100
+              <span className="text-xl sm:text-2xl font-bold font-mono text-[#EF9F27] mt-1.5 block">
+                Code-Split UI
               </span>
               <span className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 block">
-                Zero-CLS compositor rendering
+                Self-hosted fonts &amp; lazy chunks
               </span>
             </div>
 
             <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/80">
               <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400 block">
-                DEPLOYMENT RELIABILITY
+                INFRASTRUCTURE MODEL
               </span>
-              <span className="text-2xl sm:text-3xl font-bold font-mono text-zinc-900 dark:text-zinc-100 mt-1.5 block tabular-nums">
-                99.98% SLA
+              <span className="text-xl sm:text-2xl font-bold font-mono text-zinc-900 dark:text-zinc-100 mt-1.5 block">
+                Declarative IaC
               </span>
               <span className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 block">
-                Multi-region Vercel &amp; Render nodes
+                Vercel &amp; Render configurations
               </span>
             </div>
           </div>
@@ -781,15 +806,23 @@ export default function App() {
           </div>
         </section>
 
-        {/* Interactive Micro-SaaS API Gateway & Architecture Simulator */}
+        {/* Below-the-Fold Interactive Micro-SaaS API Gateway & Architecture Simulator (Code-Split with React.lazy + Suspense) */}
         <section
           id="architecture"
           className="max-w-7xl mx-auto px-6 py-16 border-t border-zinc-200 dark:border-zinc-800/80 space-y-12"
         >
-          <SearchEmbedStudio />
-          <SaasGatewayConsole />
-          <FederatedSearchSandbox />
-          <ArchitectureSimulator />
+          <Suspense
+            fallback={
+              <div className="p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-xs font-mono text-zinc-400">
+                Loading interactive architecture studios...
+              </div>
+            }
+          >
+            <SearchEmbedStudio />
+            <SaasGatewayConsole />
+            <FederatedSearchSandbox />
+            <ArchitectureSimulator />
+          </Suspense>
         </section>
 
         {/* Engineering Pillars & Technical Capabilities */}
@@ -1134,7 +1167,7 @@ export default function App() {
                     </div>
 
                     {sendError && (
-                      <div className="p-3 rounded-lg bg-zinc-900 border border-[#EF9F27]/40 text-[#EF9F27] text-xs flex items-center gap-2">
+                      <div role="alert" className="p-3 rounded-lg bg-zinc-900 border border-[#EF9F27]/40 text-[#EF9F27] text-xs flex items-center gap-2">
                         <AlertCircle className="w-4 h-4 shrink-0" />
                         <span>{sendError}</span>
                       </div>
@@ -1289,20 +1322,26 @@ export default function App() {
         </div>
       </footer>
 
-      {/* Interactive Modals */}
-      <CommandPalette
-        isOpen={isCommandOpen}
-        onClose={() => setIsCommandOpen(false)}
-        projects={PORTFOLIO_PROJECTS}
-        onSelectProject={(project) => setSelectedProject(project)}
-        isDark={isDark}
-        onToggleTheme={() => setIsDark(!isDark)}
-      />
+      {/* Lazy-Loaded Interactive Modals */}
+      <Suspense fallback={null}>
+        {isCommandOpen && (
+          <CommandPalette
+            isOpen={isCommandOpen}
+            onClose={() => setIsCommandOpen(false)}
+            projects={PORTFOLIO_PROJECTS}
+            onSelectProject={(project) => setSelectedProject(project)}
+            isDark={isDark}
+            onToggleTheme={() => setIsDark(!isDark)}
+          />
+        )}
 
-      <CaseStudyModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
+        {selectedProject && (
+          <CaseStudyModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
+        )}
+      </Suspense>
     </div>
   );
 }

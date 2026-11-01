@@ -40,16 +40,16 @@ export const PORTFOLIO_PROJECTS: ProjectCaseStudy[] = [
     liveUrl: 'https://github.com/santoshkumarvvv/search-hub-',
     bentoSpan: 'wide',
     summary:
-      'High-throughput federated search application designed to aggregate developer documentation, code indices, and real-time web endpoints under a single sub-50ms keyboard-first interface.',
+      'Federated search application designed to aggregate developer documentation, code indices, and web endpoints under a low-latency in-memory BM25 keyboard-first interface.',
     challenge:
-      'Conventional multi-source search tools suffer from cascading network waterfalls and sluggish DOM re-renders when streaming hundreds of ranked hits simultaneously.',
+      'Conventional multi-source search tools suffer from cascading network waterfalls and sluggish DOM re-renders when ranking results across multiple indices.',
     architectureSummary:
-      'Built on an asynchronous token-bucket debouncer with edge-cached inverted indices, optimistic result ranking, and virtualized viewport rendering.',
-    stack: ['TypeScript', 'Next.js', 'Tailwind CSS', 'Edge Caching', 'Vercel'],
+      'Built on an asynchronous token-bucket debouncer with in-memory inverted indices, Okapi BM25 lexical scoring, and virtualized viewport rendering.',
+    stack: ['TypeScript', 'Next.js 15', 'BM25 Engine', 'Tailwind CSS', 'Vercel'],
     metrics: [
-      { label: 'P95 Query Latency', value: '38 ms', delta: '-64% vs REST baseline' },
-      { label: 'Indexed Documents', value: '125,000+', delta: 'Zero-blocking hydration' },
-      { label: 'Lighthouse Performance', value: '99 / 100', delta: 'First Contentful Paint 0.4s' },
+      { label: 'Ranking Engine', value: 'In-Memory BM25', delta: 'Lexical & typo-tolerant scoring' },
+      { label: 'Index Architecture', value: 'Inverted Index', delta: 'Client & serverless edge routing' },
+      { label: 'UI Responsiveness', value: 'Zero-CLS Layout', delta: 'Debounced token-bucket input' },
     ],
     codeSample: {
       filename: 'lib/search-engine/federatedRanker.ts',
@@ -79,7 +79,7 @@ export function rankFederatedResults(
     id: 'dev-showcase-architecture',
     index: '02',
     title: 'Dev Showcase & Automated CI/CD Blueprint',
-    subtitle: 'Clean modular architecture with zero-downtime GitHub Actions verification pipelines',
+    subtitle: 'Clean modular architecture with GitHub Actions verification pipelines',
     category: 'cloud-cicd',
     categoryLabel: 'Cloud & CI/CD',
     year: '2026',
@@ -88,16 +88,16 @@ export function rankFederatedResults(
     liveUrl: 'https://github.com/santoshkumarvvv/dev-showcase',
     bentoSpan: 'compact',
     summary:
-      'Production-grade application blueprint demonstrating strict separation of domain logic, deterministic unit test suites, security policy enforcement, and automated release pipelines.',
+      'Application blueprint demonstrating separation of domain logic, deterministic unit test suites, static security policy enforcement, and automated release workflows.',
     challenge:
-      'Fast-moving engineering teams often accumulate brittle build scripts and inconsistent linting gates that slow down pull request velocity.',
+      'Fast-moving projects often accumulate brittle build scripts and inconsistent linting gates that slow down pull request verification.',
     architectureSummary:
-      'Implements a layered domain-driven directory structure coupled with parallelized GitHub Actions matrix workflows for static analysis and artifact publishing.',
-    stack: ['TypeScript', 'GitHub Actions', 'Clean Architecture', 'Automated Testing'],
+      'Implements a layered domain-driven directory structure coupled with GitHub Actions workflows for static analysis and artifact verification.',
+    stack: ['Dart', 'Flutter', 'Riverpod', 'Clean Architecture', 'CI/CD Actions'],
     metrics: [
-      { label: 'CI Pipeline Duration', value: '42 sec', delta: 'Cached matrix runners' },
-      { label: 'Test Suite Coverage', value: '96.4%', delta: 'Deterministic assertions' },
-      { label: 'Deployment Reliability', value: '99.98%', delta: 'Automated rollback gates' },
+      { label: 'CI Workflow', value: 'GitHub Actions', delta: 'Cached dependency runners' },
+      { label: 'Verification', value: 'AST & Static Lint', delta: 'Deterministic build checks' },
+      { label: 'Release Pattern', value: 'Automated Gates', delta: 'Branch-protected workflows' },
     ],
     codeSample: {
       filename: '.github/workflows/ci-pipeline.yml',
@@ -126,7 +126,7 @@ jobs:
     id: 'search-hub-cloud-cluster',
     index: '03',
     title: 'Search Hub Cloud & Render Deployment Node',
-    subtitle: 'Multi-region deployment orchestration across Vercel Edge and Render containers',
+    subtitle: 'Declarative deployment configuration across Vercel and Render',
     category: 'search-systems',
     categoryLabel: 'Search Systems',
     year: '2026',
@@ -135,16 +135,16 @@ jobs:
     liveUrl: 'https://github.com/santoshkumarvvv/search-hub-app',
     bentoSpan: 'compact',
     summary:
-      'Dual-cloud infrastructure setup synchronizing Next.js edge routes with persistent background worker nodes configured via declarative Render blueprints.',
+      'Cross-platform companion and cloud configuration synchronizing Next.js routes with worker services configured via declarative Render blueprints.',
     challenge:
-      'Maintaining identical environment parity and sub-second cold starts across serverless edge functions and containerized Node.js workers.',
+      'Maintaining consistent environment configuration and predictable startup behavior across serverless routes and containerized Node.js services.',
     architectureSummary:
-      'Uses declarative infrastructure-as-code (`render.yaml` and `vercel.json`) with strict health-check probes and immutable build artifacts.',
-    stack: ['Next.js', 'Render', 'Vercel', 'PostCSS', 'TypeScript'],
+      'Uses declarative infrastructure configuration (`render.yaml` and `vercel.json`) with health-check endpoints and reproducible builds.',
+    stack: ['Dart', 'Flutter', 'SQLite', 'Offline Cache', 'Cross-Platform'],
     metrics: [
-      { label: 'Cold Start Overhead', value: '110 ms', delta: 'Pre-warmed edge isolates' },
-      { label: 'Uptime SLA', value: '99.95%', delta: 'Dual-provider failover' },
-      { label: 'Bundle Payload', value: '68 kB', delta: 'Tree-shaken chunks' },
+      { label: 'Storage Engine', value: 'Local SQLite', delta: 'Offline-first query cache' },
+      { label: 'Config Model', value: 'Declarative IaC', delta: 'render.yaml & vercel.json' },
+      { label: 'Bundle Strategy', value: 'Code-Split', delta: 'On-demand lazy chunks' },
     ],
     codeSample: {
       filename: 'render.yaml',
@@ -175,16 +175,16 @@ jobs:
     liveUrl: 'https://github.com/santoshkumarvvv',
     bentoSpan: 'wide',
     summary:
-      'Flagship engineering command center combining an interactive React 19 + TypeScript web application with an autonomous scheduled cron daemon that synchronizes live commit telemetry into GitHub profile documentation.',
+      'Engineering command center combining an interactive React 19 + TypeScript web application with a scheduled GitHub Actions workflow that synchronizes live commit telemetry.',
     challenge:
-      'Static developer portfolios and markdown profiles quickly become outdated and fail to demonstrate real-time systems engineering capability.',
+      'Static developer portfolios and markdown profiles quickly become outdated and fail to reflect active repository work.',
     architectureSummary:
-      'Combines client-side GitHub REST API synchronization, interactive architecture simulation, and an automated Python + GitHub CLI cron workflow.',
-    stack: ['React 19', 'TypeScript', 'Dart / Flutter', 'Tailwind CSS v4', 'GitHub CLI'],
+      'Combines client-side GitHub REST API synchronization, interactive architecture simulation, and an automated GitHub Actions cron workflow.',
+    stack: ['TypeScript', 'React 19', 'Tailwind CSS', 'Scrypt KDF', 'PWA'],
     metrics: [
-      { label: 'Frame Budget', value: '60 fps', delta: 'Compositor-only transforms' },
-      { label: 'Sync Cron Cadence', value: '24 hr', delta: 'Zero-maintenance automation' },
-      { label: 'Accessibility Audit', value: '100 / 100', delta: 'WCAG AA compliant contrast' },
+      { label: 'Rendering', value: 'Compositor UI', delta: 'Hardware-accelerated transitions' },
+      { label: 'Telemetry Sync', value: 'Scheduled Cron', delta: 'Automated GitHub REST feed' },
+      { label: 'Accessibility', value: 'WCAG AA Contrast', delta: 'Semantic ARIA & focus traps' },
     ],
     codeSample: {
       filename: 'src/services/githubSync.ts',
@@ -218,26 +218,26 @@ export const ENGINEERING_PILLARS: EngineeringPillar[] = [
     title: 'Full-Stack TypeScript & Edge Web Systems',
     discipline: 'Web Architecture',
     description:
-      'Designing strict type-safe React 19 and Next.js applications with deterministic state management, zero layout shift, and sub-50ms server/edge response times.',
-    technologies: ['TypeScript 5.8', 'React 19', 'Next.js', 'Tailwind CSS v4', 'Node.js'],
-    benchmark: '99+ Lighthouse Performance Score across production deployments',
+      'Designing type-safe React 19 and Next.js applications with deterministic state management, minimal layout shift, and low-latency in-memory BM25 search routing.',
+    technologies: ['TypeScript', 'React 19', 'Next.js 15', 'Tailwind CSS', 'Node.js'],
+    benchmark: 'Self-hosted typography, code-split bundles, and offline-first PWA precaching',
   },
   {
     index: '02',
     title: 'Cross-Platform Mobile Engineering',
     discipline: 'Mobile & Native UI',
     description:
-      'Crafting 60/120fps native-compiled mobile applications in Dart and Flutter with clean repository-pattern architecture, offline-first caching, and responsive touch physics.',
-    technologies: ['Dart', 'Flutter', 'Clean Architecture', 'REST / WebSockets', 'SQLite'],
-    benchmark: '< 12ms average raster thread frame time on mid-tier Android hardware',
+      'Building native-compiled mobile applications in Dart and Flutter with clean repository-pattern architecture, local SQLite caching, and responsive touch physics.',
+    technologies: ['Dart', 'Flutter', 'Clean Architecture', 'Riverpod', 'SQLite'],
+    benchmark: 'Domain-driven separation across presentation, domain, and data layers',
   },
   {
     index: '03',
     title: 'Automated CI/CD & Cloud DevOps',
     discipline: 'Release Infrastructure',
     description:
-      'Building self-healing GitHub Actions pipelines, scheduled telemetry bots, and declarative multi-cloud deployments across Vercel, Render, and containerized Linux runners.',
-    technologies: ['GitHub Actions', 'Docker', 'Vercel Edge', 'Render', 'Bash / Python'],
-    benchmark: '100% automated build verification and zero-downtime production rollouts',
+      'Configuring GitHub Actions verification workflows, scheduled telemetry sync scripts, and declarative cloud deployments across Vercel and Render.',
+    technologies: ['GitHub Actions', 'Docker', 'Vercel', 'Render', 'Bash / Python'],
+    benchmark: 'Automated TypeScript AST verification and CodeQL static security scanning',
   },
 ];
