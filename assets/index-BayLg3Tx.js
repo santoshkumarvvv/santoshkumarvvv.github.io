@@ -11603,6 +11603,26 @@ var Copy = createLucideIcon("copy", [["rect", {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var CreditCard = createLucideIcon("credit-card", [["rect", {
+	width: "20",
+	height: "14",
+	x: "2",
+	y: "5",
+	rx: "2",
+	key: "ynyp8z"
+}], ["line", {
+	x1: "2",
+	x2: "22",
+	y1: "10",
+	y2: "10",
+	key: "1b3vmo"
+}]]);
+/**
+* @license lucide-react v0.546.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var DollarSign = createLucideIcon("dollar-sign", [["line", {
 	x1: "12",
 	x2: "12",
@@ -11894,6 +11914,19 @@ var Terminal = createLucideIcon("terminal", [["path", {
 }], ["path", {
 	d: "m4 17 6-6-6-6",
 	key: "1yngyt"
+}]]);
+/**
+* @license lucide-react v0.546.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var Wallet = createLucideIcon("wallet", [["path", {
+	d: "M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1",
+	key: "18etb6"
+}], ["path", {
+	d: "M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4",
+	key: "xoc0q4"
 }]]);
 /**
 * @license lucide-react v0.546.0 - ISC
@@ -13898,6 +13931,8 @@ var SearchEmbedStudio = () => {
 	const [activeCodeTab, setActiveCodeTab] = (0, import_react.useState)("html");
 	const [isCheckingOut, setIsCheckingOut] = (0, import_react.useState)(false);
 	const [purchasedKey, setPurchasedKey] = (0, import_react.useState)(null);
+	const [customCheckoutUrl, setCustomCheckoutUrl] = (0, import_react.useState)("");
+	const [showPayoutSettings, setShowPayoutSettings] = (0, import_react.useState)(false);
 	const handleStartCrawl = () => {
 		setIsCrawling(true);
 		setCrawlProgress(20);
@@ -13996,6 +14031,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 		setTimeout(() => setCopiedSnippet(null), 2e3);
 	};
 	const handleTriggerCheckout = (plan) => {
+		if (customCheckoutUrl && customCheckoutUrl.startsWith("http")) {
+			window.location.href = customCheckoutUrl;
+			return;
+		}
 		setIsCheckingOut(true);
 		setTimeout(() => {
 			setIsCheckingOut(false);
@@ -14010,64 +14049,108 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute top-1/2 -right-24 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" }),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "relative overflow-hidden rounded-3xl border border-cyan-500/30 bg-[#06080e]/90 p-6 md:p-8 backdrop-blur-xl shadow-2xl shadow-cyan-950/40",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex flex-col lg:flex-row lg:items-center justify-between gap-6",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "space-y-3 max-w-2xl",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex flex-col lg:flex-row lg:items-center justify-between gap-6",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "space-y-3 max-w-2xl",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-cyan-950/80 text-cyan-400 border border-cyan-500/40 shadow-xs shadow-cyan-500/20",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "w-3.5 h-3.5 text-cyan-400" }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "SEARCHEMBED & DOCPULSE CORE" }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "text-emerald-400 font-mono",
+											children: "LIVE PRODUCTION NODE"
+										})
+									]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+									className: "text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight",
+									children: "Instant In-Memory Search Engine & Whitelabel Paywall Studio"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "text-sm md:text-base text-zinc-300 leading-relaxed",
+									children: "1-Line embed replacing expensive Algolia & Elasticsearch setups. Zero server queries, sub-2ms Damerau-Levenshtein typo tolerance, and automated sitemap crawling."
+								})
+							]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex flex-col sm:flex-row items-stretch sm:items-center gap-3",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+									onClick: () => handleTriggerCheckout("ltd"),
+									disabled: isCheckingOut,
+									className: "flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-sm transition-all shadow-lg shadow-cyan-500/30 active:scale-95 cursor-pointer",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DollarSign, { className: "w-4 h-4" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: isCheckingOut ? "Minting License Key..." : "Buy Lifetime License ($39 LTD)" })]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+									onClick: () => setShowPayoutSettings(!showPayoutSettings),
+									className: "flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-emerald-500/30 bg-emerald-950/40 hover:bg-emerald-900/60 text-emerald-300 text-xs font-semibold transition-all cursor-pointer",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Wallet, { className: "w-4 h-4 text-emerald-400" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: customCheckoutUrl ? "Bank Link Active" : "Connect LemonSqueezy / Bank" })]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+									href: "https://github.com/santoshkumarvvv/santoshkumarvvv",
+									target: "_blank",
+									rel: "noopener noreferrer",
+									className: "flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-zinc-700 bg-zinc-900/80 hover:bg-zinc-800 text-zinc-200 text-sm font-medium transition-colors",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "w-4 h-4" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "GitHub Core Repo" })]
+								})
+							]
+						})]
+					}),
+					showPayoutSettings && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-6 p-5 rounded-2xl bg-zinc-950/90 border border-emerald-500/30 text-xs space-y-3",
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-cyan-950/80 text-cyan-400 border border-cyan-500/40 shadow-xs shadow-cyan-500/20",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "w-3.5 h-3.5 text-cyan-400" }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "SEARCHEMBED & DOCPULSE CORE" }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "text-emerald-400 font-mono",
-										children: "LIVE PRODUCTION NODE"
-									})
-								]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-								className: "text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight",
-								children: "Instant In-Memory Search Engine & Whitelabel Paywall Studio"
+								className: "flex items-center justify-between",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CreditCard, { className: "w-4 h-4 text-emerald-400" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Live Bank & LemonSqueezy Direct Payout Routing" })]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "text-zinc-500 font-mono",
+									children: "100% Direct Deposits"
+								})]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-sm md:text-base text-zinc-300 leading-relaxed",
-								children: "1-Line embed replacing expensive Algolia & Elasticsearch setups. Zero server queries, sub-2ms Damerau-Levenshtein typo tolerance, and automated sitemap crawling."
+								className: "text-zinc-400 leading-relaxed",
+								children: "Paste your live LemonSqueezy or Gumroad checkout product link below. When visitors click \"Buy\", all customer payments flow directly into your LemonSqueezy merchant account and are deposited automatically into your bank account."
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex gap-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+									type: "text",
+									value: customCheckoutUrl,
+									onChange: (e) => setCustomCheckoutUrl(e.target.value),
+									placeholder: "https://yourstore.lemonsqueezy.com/checkout/buy/...",
+									className: "w-full px-3.5 py-2 rounded-xl border border-zinc-700 bg-zinc-900 text-zinc-100 font-mono text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+									onClick: () => setShowPayoutSettings(false),
+									className: "px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold rounded-xl shrink-0 transition-colors cursor-pointer",
+									children: "Save Payout Link"
+								})]
 							})
 						]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex flex-col sm:flex-row items-stretch sm:items-center gap-3",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-							onClick: () => handleTriggerCheckout("ltd"),
-							disabled: isCheckingOut,
-							className: "flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-sm transition-all shadow-lg shadow-cyan-500/30 active:scale-95 cursor-pointer",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DollarSign, { className: "w-4 h-4" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: isCheckingOut ? "Minting License Key..." : "Buy Lifetime License ($39 LTD)" })]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-							href: "https://github.com/santoshkumarvvv/santoshkumarvvv",
-							target: "_blank",
-							rel: "noopener noreferrer",
-							className: "flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-zinc-700 bg-zinc-900/80 hover:bg-zinc-800 text-zinc-200 text-sm font-medium transition-colors",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, { className: "w-4 h-4" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "GitHub Core Repo" })]
+					}),
+					purchasedKey && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-6 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/40 flex flex-col md:flex-row md:items-center justify-between gap-3 animate-fadeIn",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center gap-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, { className: "w-5 h-5 text-emerald-400 shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs font-semibold text-emerald-400 uppercase tracking-wider",
+								children: "Payment Verified · Whitelabel Pro License Minted"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("code", {
+								className: "text-sm font-mono font-bold text-white",
+								children: purchasedKey
+							})] })]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							onClick: () => copyToClipboard(purchasedKey, "license-key"),
+							className: "flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-xs transition-colors cursor-pointer",
+							children: [copiedSnippet === "license-key" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "w-3.5 h-3.5" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Copy, { className: "w-3.5 h-3.5" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: copiedSnippet === "license-key" ? "Copied Key!" : "Copy Key" })]
 						})]
-					})]
-				}), purchasedKey && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "mt-6 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/40 flex flex-col md:flex-row md:items-center justify-between gap-3 animate-fadeIn",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center gap-3",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, { className: "w-5 h-5 text-emerald-400 shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "text-xs font-semibold text-emerald-400 uppercase tracking-wider",
-							children: "Payment Verified · Whitelabel Pro License Minted"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("code", {
-							className: "text-sm font-mono font-bold text-white",
-							children: purchasedKey
-						})] })]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-						onClick: () => copyToClipboard(purchasedKey, "license-key"),
-						className: "flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-xs transition-colors cursor-pointer",
-						children: [copiedSnippet === "license-key" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "w-3.5 h-3.5" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Copy, { className: "w-3.5 h-3.5" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: copiedSnippet === "license-key" ? "Copied Key!" : "Copy Key" })]
-					})]
-				})]
+					})
+				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "grid grid-cols-1 lg:grid-cols-12 gap-8",

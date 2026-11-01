@@ -85,9 +85,11 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-amber-400: oklch(82.8% .189 84.429);
+    --color-emerald-300: oklch(84.5% .143 164.978);
     --color-emerald-400: oklch(76.5% .177 163.223);
     --color-emerald-500: oklch(69.6% .17 162.48);
     --color-emerald-600: oklch(59.6% .145 163.225);
+    --color-emerald-900: oklch(37.8% .077 168.94);
     --color-emerald-950: oklch(26.2% .051 172.552);
     --color-cyan-200: oklch(91.7% .08 205.041);
     --color-cyan-300: oklch(86.5% .127 207.078);
@@ -1242,10 +1244,6 @@
     background-color: oklab(13.493% -.000637434 -.0142751 / .9);
   }
 
-  .bg-\[\#08090f\]\/80 {
-    background-color: oklab(14.1707% .00150913 -.0132255 / .8);
-  }
-
   .bg-black\/70 {
     background-color: #000000b3;
   }
@@ -1337,6 +1335,16 @@
   @supports (color: color-mix(in lab, red, red)) {
     .bg-emerald-500\/10 {
       background-color: color-mix(in oklab, var(--color-emerald-500) 10%, transparent);
+    }
+  }
+
+  .bg-emerald-950\/40 {
+    background-color: #002c2266;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-emerald-950\/40 {
+      background-color: color-mix(in oklab, var(--color-emerald-950) 40%, transparent);
     }
   }
 
@@ -1877,6 +1885,10 @@
     color: var(--color-cyan-400);
   }
 
+  .text-emerald-300 {
+    color: var(--color-emerald-300);
+  }
+
   .text-emerald-400 {
     color: var(--color-emerald-400);
   }
@@ -2172,6 +2184,16 @@
       background-color: var(--color-emerald-400);
     }
 
+    .hover\:bg-emerald-900\/60:hover {
+      background-color: #004e3b99;
+    }
+
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-emerald-900\/60:hover {
+        background-color: color-mix(in oklab, var(--color-emerald-900) 60%, transparent);
+      }
+    }
+
     .hover\:bg-zinc-100:hover {
       background-color: var(--color-zinc-100);
     }
@@ -2275,6 +2297,10 @@
 
   .focus\:ring-cyan-500:focus {
     --tw-ring-color: var(--color-cyan-500);
+  }
+
+  .focus\:ring-emerald-500:focus {
+    --tw-ring-color: var(--color-emerald-500);
   }
 
   .focus\:outline-none:focus {
