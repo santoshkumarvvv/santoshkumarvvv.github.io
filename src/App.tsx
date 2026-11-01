@@ -194,14 +194,24 @@ const I18N = {
     footerTitle: 'Santosh Kumar (@santoshkumarvvv) · Systems & Application Engineering',
     footerSub: 'Open Source · Okapi BM25 · Native Flutter · CI/CD Verified',
     footerResume: 'Resume (PDF)',
-    footerComms: 'Direct Comms'
+    footerComms: 'Direct Comms',
+    formErrorMissing: 'Please provide both your email address and message.',
+    formErrorNotConfigured: 'Message could not be sent. Form key is not configured yet.',
+    statReposLabel: 'PUBLIC REPOSITORIES',
+    statReposSub: 'Active open source engines',
+    statStarsLabel: 'TOTAL STARGAZERS',
+    statStarsSub: 'Community verified',
+    statSecurityLabel: 'CODEQL SECURITY',
+    statSecuritySub: 'Clean static analysis',
+    statDeployLabel: 'DEPLOYMENT FREQUENCY',
+    statDeploySub: 'Continuous CI/CD deploy'
   },
   hi: {
     langBtn: 'हिंदी / English',
-    namaste: 'नमस्ते (Namaste) · Welcome to Santosh Kumar\'s Systems & Search Hub',
+    namaste: 'नमस्ते · संतोष कुमार के सिस्टम्स और सर्च हब में आपका स्वागत है',
     role: 'सॉफ्टवेयर सिस्टम्स एवं सर्च इंजन आर्किटेक्ट',
-    heroTitle: 'हाई-परफॉर्मेंस इन-मेमोरी सर्च इंजन और नेटिव मोबाइल ऐप्स का निर्माण।',
-    heroDesc: 'कम-विलंबता इन-मेमोरी BM25 लेक्सिकल सर्च कोर, स्क्रिप्ट (Scrypt KDF) क्रिप्टोग्राफी और स्वचालित CI/CD पाइपलाइनों के साथ नेटिव फ्लटर मोबाइल सिस्टम।',
+    heroTitle: 'तेज़ इन-मेमोरी सर्च इंजन, क्रिप्टोग्राफी और नेटिव मोबाइल ऐप्स का निर्माण।',
+    heroDesc: 'कम विलंबता वाले इन-मेमोरी BM25 सर्च कोर, Scrypt क्रिप्टोग्राफी और स्वचालित CI/CD के साथ नेटिव फ्लटर मोबाइल सिस्टम बनाता हूँ।',
     viewSourceBtn: 'सोर्स कोड देखें',
     exploreWorksBtn: 'प्रमुख प्रोजेक्ट्स देखें',
     navWorks: 'प्रमुख कार्य',
@@ -241,7 +251,17 @@ const I18N = {
     footerTitle: 'संतोष कुमार (@santoshkumarvvv) · सिस्टम्स और एप्लिकेशन इंजीनियरिंग',
     footerSub: 'ओपन सोर्स · ओकापी BM25 · नेटिव फ्लटर · CI/CD सत्यापित',
     footerResume: 'रिज्यूमे (PDF)',
-    footerComms: 'सीधा संपर्क'
+    footerComms: 'सीधा संपर्क',
+    formErrorMissing: 'कृपया अपना ईमेल और संदेश दोनों दें।',
+    formErrorNotConfigured: 'संदेश नहीं भेजा जा सका। फॉर्म कुंजी अभी कॉन्फ़िगर नहीं है।',
+    statReposLabel: 'सार्वजनिक रिपॉजिटरी',
+    statReposSub: 'सक्रिय ओपन-सोर्स इंजन',
+    statStarsLabel: 'कुल स्टार',
+    statStarsSub: 'कम्युनिटी द्वारा सत्यापित',
+    statSecurityLabel: 'कोडक्यूएल सुरक्षा',
+    statSecuritySub: 'स्वच्छ स्टैटिक एनालिसिस',
+    statDeployLabel: 'डिप्लॉयमेंट फ़्रीक्वेंसी',
+    statDeploySub: 'निरंतर CI/CD डिप्लॉय'
   }
 };
 
@@ -279,10 +299,12 @@ export default function App() {
   const [sendSuccess, setSendSuccess] = useState(false);
   const [sendError, setSendError] = useState<string | null>(null);
 
+  const t = isHindi ? I18N.hi : I18N.en;
+
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formState.email.trim() || !formState.message.trim()) {
-      setSendError('Please provide both your email address and message.');
+      setSendError(t.formErrorMissing);
       return;
     }
     setIsSending(true);
@@ -307,11 +329,11 @@ export default function App() {
         setFormState({ name: '', email: '', subject: '', message: '' });
       } else {
         setSendSuccess(false);
-        setSendError('Message could not be sent. Form key is not configured yet.');
+        setSendError(t.formErrorNotConfigured);
       }
     } catch {
       setSendSuccess(false);
-      setSendError('Message could not be sent. Form key is not configured yet.');
+      setSendError(t.formErrorNotConfigured);
     } finally {
       setIsSending(false);
     }
@@ -417,7 +439,6 @@ export default function App() {
     setTimeout(() => setCopiedCloneUrl(null), 1800);
   };
 
-  const t = isHindi ? I18N.hi : I18N.en;
   const totalStars = repos.reduce((sum, r) => sum + (r.stargazers_count || 0), 0) || 12;
 
   return (
@@ -902,35 +923,35 @@ export default function App() {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800/90">
-              <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400 block">PUBLIC REPOSITORIES</span>
+              <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400 block">{t.statReposLabel}</span>
               <span className="text-3xl font-extrabold font-mono text-[#EF9F27] mt-2 block tabular-nums">
                 {githubUser.public_repos}
               </span>
-              <span className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 block">Active open-source systems</span>
+              <span className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 block">{t.statReposSub}</span>
             </div>
 
             <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800/90">
-              <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400 block">TOTAL STARGAZERS</span>
+              <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400 block">{t.statStarsLabel}</span>
               <span className="text-3xl font-extrabold font-mono text-zinc-400 mt-2 block tabular-nums">
                 {totalStars} ★
               </span>
-              <span className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 block">Community &amp; project stars</span>
+              <span className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 block">{t.statStarsSub}</span>
             </div>
 
             <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800/90">
-              <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400 block">CODEQL &amp; SECURITY</span>
+              <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400 block">{t.statSecurityLabel}</span>
               <span className="text-3xl font-extrabold font-mono text-[#EF9F27] mt-2 block">
                 0 Alerts
               </span>
-              <span className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 block">Clean automated static analysis</span>
+              <span className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 block">{t.statSecuritySub}</span>
             </div>
 
             <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800/90">
-              <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400 block">RECENT PRODUCTION ACTIVITY</span>
+              <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400 block">{t.statDeployLabel}</span>
               <span className="text-xl font-bold font-mono text-zinc-900 dark:text-zinc-100 mt-2 block truncate">
                 {repos[0] ? new Date(repos[0].updated_at).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : 'Active Today'}
               </span>
-              <span className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 block">Continuous Git push cadence</span>
+              <span className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 block">{t.statDeploySub}</span>
             </div>
           </div>
         </section>
