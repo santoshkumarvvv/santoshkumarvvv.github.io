@@ -216,17 +216,30 @@ function runBM25Search(query: string): Array<{ title: string; url: string; snipp
   return scoredResults.sort((a, b) => b.score - a.score);
 }
 
-const CORS_HEADERS: Record<string, string> = {
-  'Access-Control-Allow-Origin': 'https://santoshkumarvvv.github.io',
-  'Access-Control-Allow-Methods': 'GET, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-  'Content-Type': 'application/json; charset=utf-8'
-};
+const ALLOWED_ORIGINS = [
+  'https://santoshkumarvvv.github.io',
+  'https://vvv-portfolio.vercel.app'
+];
 
-export async function OPTIONS(): Promise<Response> {
+function getCorsHeaders(request?: Request): Record<string, string> {
+  const origin = request?.headers.get('origin') || '';
+  const allowedOrigin = ALLOWED_ORIGINS.includes(origin)
+    ? origin
+    : ALLOWED_ORIGINS[0];
+
+  return {
+    'Access-Control-Allow-Origin': allowedOrigin,
+    'Access-Control-Allow-Methods': 'GET, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    'Vary': 'Origin',
+    'Content-Type': 'application/json; charset=utf-8'
+  };
+}
+
+export async function OPTIONS(request?: Request): Promise<Response> {
   return new Response(null, {
     status: 204,
-    headers: CORS_HEADERS
+    headers: getCorsHeaders(request)
   });
 }
 
@@ -239,7 +252,7 @@ export async function GET(request: Request): Promise<Response> {
 
   const rateStatus = isRateLimited(clientIp);
   const responseHeaders: Record<string, string> = {
-    ...CORS_HEADERS,
+    ...getCorsHeaders(request),
     'X-RateLimit-Limit': String(MAX_REQUESTS),
     'X-RateLimit-Remaining': String(rateStatus.remaining),
     'X-RateLimit-Reset': String(rateStatus.resetSeconds)

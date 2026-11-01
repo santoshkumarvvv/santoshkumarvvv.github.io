@@ -196,6 +196,7 @@ const I18N = {
     footerSub: 'Open Source · Okapi BM25 · Native Flutter · CI/CD Verified',
     footerResume: 'Resume (PDF)',
     footerComms: 'Direct Comms',
+    deployedOnVercel: 'Deployed on Vercel',
     formErrorMissing: 'Please provide both your email address and message.',
     formErrorSendFailed: 'Message could not be sent. Please try again.',
     statReposLabel: 'PUBLIC REPOSITORIES',
@@ -254,6 +255,7 @@ const I18N = {
     footerSub: 'ओपन सोर्स · ओकापी BM25 · नेटिव फ्लटर · CI/CD सत्यापित',
     footerResume: 'रिज्यूमे (PDF)',
     footerComms: 'सीधा संपर्क',
+    deployedOnVercel: 'Vercel पर डिप्लॉय किया गया',
     formErrorMissing: 'कृपया अपना ईमेल और संदेश दोनों दें।',
     formErrorSendFailed: 'संदेश नहीं भेजा जा सका। कृपया पुनः प्रयास करें।',
     statReposLabel: 'सार्वजनिक रिपॉजिटरी',
@@ -294,6 +296,9 @@ export default function App() {
     public_repos: number;
     followers: number;
     public_gists: number;
+    total_stars?: number;
+    latest_repo_name?: string;
+    latest_repo_date?: string;
   }>({ public_repos: 4, followers: 1, public_gists: 0 });
 
   const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' });
@@ -402,15 +407,39 @@ export default function App() {
         }
       }
 
-      const userRes = await fetch('https://api.github.com/users/santoshkumarvvv');
-      if (userRes.ok) {
-        const u = await userRes.json();
-        if (u && typeof u.public_repos === 'number') {
-          setGithubUser({
-            public_repos: u.public_repos,
-            followers: u.followers || 1,
-            public_gists: u.public_gists || 0
-          });
+      let statsLoaded = false;
+      try {
+        const statsRes = await fetch('https://vvv-portfolio.vercel.app/api/stats');
+        if (statsRes.ok) {
+          const statsData = await statsRes.json();
+          if (statsData && typeof statsData.public_repos === 'number') {
+            setGithubUser((prev) => ({
+              ...prev,
+              public_repos: statsData.public_repos,
+              total_stars:
+                typeof statsData.total_stars === 'number' ? statsData.total_stars : prev.total_stars,
+              latest_repo_name: statsData.latest_repo_name || prev.latest_repo_name,
+              latest_repo_date: statsData.latest_repo_date || prev.latest_repo_date
+            }));
+            statsLoaded = true;
+          }
+        }
+      } catch {
+        // Fall back to direct GitHub API call below
+      }
+
+      if (!statsLoaded) {
+        const userRes = await fetch('https://api.github.com/users/santoshkumarvvv');
+        if (userRes.ok) {
+          const u = await userRes.json();
+          if (u && typeof u.public_repos === 'number') {
+            setGithubUser((prev) => ({
+              ...prev,
+              public_repos: u.public_repos,
+              followers: u.followers || 1,
+              public_gists: u.public_gists || 0
+            }));
+          }
         }
       }
     } catch {
@@ -441,7 +470,10 @@ export default function App() {
     setTimeout(() => setCopiedCloneUrl(null), 1800);
   };
 
-  const totalStars = repos.reduce((sum, r) => sum + (r.stargazers_count || 0), 0) || 12;
+  const totalStars =
+    typeof githubUser.total_stars === 'number'
+      ? githubUser.total_stars
+      : repos.reduce((sum, r) => sum + (r.stargazers_count || 0), 0) || 12;
 
   return (
     <div className="min-h-screen bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 transition-colors">
@@ -960,7 +992,9 @@ export default function App() {
             <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800/90">
               <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400 block">{t.statDeployLabel}</span>
               <span className="text-xl font-bold font-mono text-zinc-900 dark:text-zinc-100 mt-2 block truncate">
-                {repos[0] ? new Date(repos[0].updated_at).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : 'Active Today'}
+                {githubUser.latest_repo_date || repos[0]?.updated_at
+                  ? new Date(githubUser.latest_repo_date || repos[0].updated_at).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })
+                  : 'Active Today'}
               </span>
               <span className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 block">{t.statDeploySub}</span>
             </div>
@@ -1338,6 +1372,16 @@ export default function App() {
             >
               <Mail className="w-3.5 h-3.5" />
               <span>{t.footerComms}</span>
+            </a>
+            <a
+              href="https://vercel.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-en="Deployed on Vercel"
+              data-hi="Vercel पर डिप्लॉय किया गया"
+              className="text-[11px] text-zinc-500 hover:text-[#EF9F27] transition-colors"
+            >
+              {t.deployedOnVercel}
             </a>
           </div>
         </div>
