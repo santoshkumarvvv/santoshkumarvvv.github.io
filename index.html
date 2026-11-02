@@ -20,24 +20,24 @@
           window.__applyPortfolioTheme = function(isDark) {
             var root = document.documentElement;
             if (isDark) {
-              root.classList.add('dark');
+              root.classList.add('dark);
             } else {
-              root.classList.remove('dark');
+              root.classList.remove('dark);
             }
             try {
-              localStorage.setItem('theme', isDark ? 'dark' : 'light');
+              localStorage.setItem('theme', isDark ? 'dark' : 'light);
             } catch (err) {}
-            var preHeader = document.getElementById('prerender-header');
+            var preHeader = document.getElementById('prerender-header);
             if (preHeader) {
               preHeader.style.backgroundColor = isDark ? '#09090b' : '#fafafa';
               preHeader.style.borderBottomColor = isDark ? '#27272a' : '#e4e4e7';
             }
           };
-          var storedTheme = localStorage.getItem('theme');
+          var storedTheme = localStorage.getItem('theme);
           var initialDark = storedTheme ? storedTheme === 'dark' : true;
           window.__applyPortfolioTheme(initialDark);
 
-          var storedLang = localStorage.getItem('lang');
+          var storedLang = localStorage.getItem('lang);
           var activeLang = storedLang === 'hi' ? 'hi' : 'en';
           document.documentElement.setAttribute('lang', activeLang);
           window.__applyPortfolioLang = function(lang) {
@@ -49,12 +49,12 @@
             var nodes = document.querySelectorAll('[data-en][data-hi]');
             for (var i = 0; i < nodes.length; i++) {
               var el = nodes[i];
-              var text = targetLang === 'hi' ? el.getAttribute('data-hi') : el.getAttribute('data-en');
+              var text = targetLang === 'hi' ? el.getAttribute('data-hi') : el.getAttribute('data-en);
               if (text !== null) el.textContent = text;
             }
           };
-        } catch (e) {}
-      })();
+        } catch (e) {})
+      })());
     </script>
 
     <!-- Canonical URL -->
@@ -71,7 +71,7 @@
     <meta property="og:url" content="https://santoshkumarvvv.github.io/" />
     <meta property="og:title" content="Santosh Kumar — Systems & Search Engine Engineering Portfolio" />
     <meta property="og:description" content="Engineering high-velocity distributed systems, in-memory BM25 lexical search engines, deterministic TypeScript interfaces, and native Flutter mobile engines." />
-    <meta property="og:image" content="https://vvv-portfolio.vercel.app/api/og" />
+    <meta property="og:image" content="https://santoshkumarvvv.github.io/assets/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Santosh Kumar Systems & Search Engineering Portfolio" />
@@ -133,9 +133,9 @@
           <a href="#repositories" style="color: var(--pre-muted); text-decoration: none;" data-en="Repositories" data-hi="रिपॉजिटरी">Repositories</a>
           <a href="#contact" style="color: var(--pre-muted); text-decoration: none;" data-en="Contact" data-hi="संपर्क करें">Contact</a>
           <!-- Visible Social Links in Prerender Header -->
-          <a href="https://github.com/santoshkumarvvv" style="color: var(--pre-muted); text-decoration: none;" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://x.com/SantoshKum86044" style="color: var(--pre-muted); text-decoration: none;" target="_blank" rel="noopener noreferrer">X</a>
-          <a href="https://www.linkedin.com/in/santosh-kumar-66a9392b2/" style="color: var(--pre-muted); text-decoration: none;" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/santoshkumarvvv" style="color: var(--pre-muted); text-decoration: none;" target="_blank" rel=" noopener noreferrer">GitHub</a>
+          <a href="https://x.com/SantoshKum86044" style="color: var(--pre-muted); text-decoration: none;" target="_blank" rel=" noopener noreferrer">X</a>
+          <a href="https://www.linkedin.com/in/santosh-kumar-66a9392b2/" style="color: var(--pre-muted); text-decoration: none;" target="_blank" rel=" noopener noreferrer">LinkedIn</a>
           <!-- Hindi / English Language Toggle Button in Header -->
           <button id="lang-toggle-btn" type="button" aria-label="Toggle Hindi or English language" onclick="(function(){var next = localStorage.getItem('lang') === 'hi' ? 'en' : 'hi'; if (window.__applyPortfolioLang) window.__applyPortfolioLang(next);})()" style="background: transparent; border: 1px solid #EF9F27; color: #EF9F27; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer;">
             हिंदी / English
@@ -153,7 +153,7 @@
           <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px; padding: 6px 14px; border-radius: 9999px; background: var(--pre-surface); border: 1px solid rgba(239, 159, 39, 0.4); font-size: 13px; font-weight: 600; color: #EF9F27;">
             <span style="color: #EF9F27;">●</span>
             <span>🇮🇳</span>
-            <span data-en="नमस्ते (Namaste) · Welcome to Santosh Kumar's Systems &amp; Search Hub" data-hi="नमस्ते · संतोष कुमार के सिस्टम्स और सर्च हब में आपका स्वागत है">नमस्ते (Namaste) · Welcome to Santosh Kumar's Systems &amp; Search Hub</span>
+            <span data-en="नमस्ते (Namaste) · Welcome to Santosh Kumar's Systems & Search Hub" data-hi="नमस्ते · संतोष कुमार के सिस्टम्स और सर्च हब में आपका स्वागत है">नमस्ते (Namaste) · Welcome to Santosh Kumar's Systems & Search Hub</span>
           </div>
 
           <h1 style="font-size: 42px; font-weight: 800; line-height: 1.15; margin-bottom: 16px; color: var(--pre-text);" data-en="Engineering high-velocity web systems, in-memory search engines, and native mobile apps." data-hi="तेज़ इन-मेमोरी सर्च इंजन, क्रिप्टोग्राफी और नेटिव मोबाइल ऐप्स का निर्माण।">
@@ -166,236 +166,15 @@
 
           <!-- Hero Buttons: Live Demo, View Source & Explore Works -->
           <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center;">
-            <a href="https://vvv-portfolio.vercel.app" target="_blank" rel="noopener noreferrer" style="background: #EF9F27; color: #09090b; padding: 12px 24px; border-radius: 8px; font-weight: 700; text-decoration: none;" data-en="Live Demo" data-hi="लाइव डेमो">Live Demo</a>
-            <a href="https://github.com/santoshkumarvvv/search-hub-" target="_blank" rel="noopener noreferrer" style="background: transparent; color: #EF9F27; padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none; border: 1px solid #EF9F27;" data-en="View Source" data-hi="सोर्स कोड देखें">View Source</a>
+            <a href="https://santoshkumarvvv.github.io/" target="_blank" rel=" noopener noreferrer" style="background: #EF9F27; color: #09090b; padding: 12px 24px; border-radius: 8px; font-weight: 700; text-decoration: none;" data-en="Live Demo" data-hi="लाइव डेमो">Live Demo</a>
+            <a href="https://github.com/santoshkumarvvv/search-hub-" target="_blank" rel=" noopener noreferrer" style="background: transparent; color: #EF9F27; padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none; border: 1px solid #EF9F27;" data-en="View Source" data-hi="सोर्स कोड देखें">View Source</a>
             <a href="#works" style="background: transparent; color: #EF9F27; padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none; border: 1px solid #EF9F27;" data-en="Explore Works" data-hi="प्रमुख प्रोजेक्ट्स देखें">Explore Works</a>
           </div>
 
           <!-- Hero Visible Social Links Bar -->
           <div style="display: flex; gap: 12px; margin-top: 20px; align-items: center; flex-wrap: wrap;">
-            <a href="https://github.com/santoshkumarvvv" target="_blank" rel="noopener noreferrer" style="color: var(--pre-muted); text-decoration: none; font-size: 13px; font-family: monospace; border: 1px solid var(--pre-border); padding: 6px 12px; border-radius: 6px; background: var(--pre-surface);">GitHub: @santoshkumarvvv &rarr;</a>
-            <a href="https://x.com/SantoshKum86044" target="_blank" rel="noopener noreferrer" style="color: var(--pre-muted); text-decoration: none; font-size: 13px; font-family: monospace; border: 1px solid var(--pre-border); padding: 6px 12px; border-radius: 6px; background: var(--pre-surface);">X: @SantoshKum86044 &rarr;</a>
-            <a href="https://www.linkedin.com/in/santosh-kumar-66a9392b2/" target="_blank" rel="noopener noreferrer" style="color: var(--pre-muted); text-decoration: none; font-size: 13px; font-family: monospace; border: 1px solid var(--pre-border); padding: 6px 12px; border-radius: 6px; background: var(--pre-surface);">LinkedIn: Santosh Kumar &rarr;</a>
+            <a href="https://github.com/santoshkumarvvv" target="_blank" rel=" noopener noreferrer" style="color: var(--pre-muted); text-decoration: none; font-size: 13px; font-family: monospace; border: 1px solid var(--pre-border); padding: 6px 12px; border-radius: 6px; background: var(--pre-surface);">GitHub: @santoshkumarvvv &rarr;</a>
+            <a href="https://x.com/SantoshKum86044" target="_blank" rel=" noopener noreferrer" style="color: var(--pre-muted); text-decoration: none; font-size: 13px; font-family: monospace; border: 1px solid var(--pre-border); padding: 6px 12px; border-radius: 6px; background: var(--pre-surface);">X: @SantoshKum86044 &rarr;</a>
+            <a href="https://www.linkedin.com/in/santosh-kumar-66a9392b2/" target="_blank" rel=" noopener noreferrer" style="color: var(--pre-muted); text-decoration: none; font-size: 13px; font-family: monospace; border: 1px solid var(--pre-border); padding: 6px 12px; border-radius: 6px; background: var(--pre-surface);">LinkedIn: Santosh Kumar &rarr;</a>
           </div>
         </section>
-
-        <!-- Live GitHub Ecosystem Telemetry Stats -->
-        <section id="stats" style="margin-bottom: 48px; background: var(--pre-bg); border: 1px solid var(--pre-border); padding: 24px; border-radius: 14px;">
-          <h2 style="font-size: 22px; font-weight: 700; color: var(--pre-text); margin-bottom: 16px;" data-en="Live GitHub Ecosystem Telemetry" data-hi="लाइव गिटहब इकोसिस्टम टेलीमेट्री">Live GitHub Ecosystem Telemetry</h2>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-            <div style="background: var(--pre-surface); padding: 18px; border-radius: 10px; border: 1px solid var(--pre-border);">
-              <span style="font-size: 12px; color: #a1a1aa; font-family: monospace; display: block;" data-en="PUBLIC REPOSITORIES" data-hi="सार्वजनिक रिपॉजिटरी">PUBLIC REPOSITORIES</span>
-              <span style="font-size: 28px; font-weight: 800; color: #EF9F27; font-family: monospace;">4</span>
-              <span style="font-size: 12px; color: #a1a1aa; display: block;" data-en="Active open source engines" data-hi="सक्रिय ओपन-सोर्स इंजन">Active open source engines</span>
-            </div>
-            <div style="background: var(--pre-surface); padding: 18px; border-radius: 10px; border: 1px solid var(--pre-border);">
-              <span style="font-size: 12px; color: #a1a1aa; font-family: monospace; display: block;" data-en="TOTAL STARGAZERS" data-hi="कुल स्टार">TOTAL STARGAZERS</span>
-              <span style="font-size: 28px; font-weight: 800; color: #a1a1aa; font-family: monospace;">12 ★</span>
-              <span style="font-size: 12px; color: #a1a1aa; display: block;" data-en="Community verified" data-hi="कम्युनिटी द्वारा सत्यापित">Community verified</span>
-            </div>
-            <div style="background: var(--pre-surface); padding: 18px; border-radius: 10px; border: 1px solid var(--pre-border);">
-              <span style="font-size: 12px; color: #a1a1aa; font-family: monospace; display: block;" data-en="CODEQL SECURITY" data-hi="कोडक्यूएल सुरक्षा">CODEQL SECURITY</span>
-              <span style="font-size: 28px; font-weight: 800; color: #EF9F27; font-family: monospace;">0 Alerts</span>
-              <span style="font-size: 12px; color: #a1a1aa; display: block;" data-en="Clean static analysis" data-hi="स्वच्छ स्टैटिक एनालिसिस">Clean static analysis</span>
-            </div>
-            <div style="background: var(--pre-surface); padding: 18px; border-radius: 10px; border: 1px solid var(--pre-border);">
-              <span style="font-size: 12px; color: #a1a1aa; font-family: monospace; display: block;" data-en="DEPLOYMENT FREQUENCY" data-hi="डिप्लॉयमेंट फ़्रीक्वेंसी">DEPLOYMENT FREQUENCY</span>
-              <span style="font-size: 20px; font-weight: 700; color: var(--pre-text); font-family: monospace; margin-top: 6px; display: block;">Active Today</span>
-              <span style="font-size: 12px; color: #a1a1aa; display: block;" data-en="Continuous CI/CD deploy" data-hi="निरंतर CI/CD डिप्लॉय">Continuous CI/CD deploy</span>
-            </div>
-          </div>
-        </section>
-
-        <!-- Selected Real Works & Repositories -->
-        <section id="works" style="margin-bottom: 48px;">
-          <h2 style="font-size: 26px; font-weight: 700; color: var(--pre-text); margin-bottom: 20px;" data-en="Selected Architecture & Systems Works" data-hi="चयनित आर्किटेक्चर और सिस्टम्स प्रोजेक्ट्स">Selected Architecture &amp; Systems Works</h2>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-            <!-- search-hub- -->
-            <article style="background: var(--pre-surface); border: 1px solid var(--pre-border); padding: 24px; border-radius: 12px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                <h3 style="font-size: 18px; color: var(--pre-text); margin: 0;">SearchHub Federated Engine</h3>
-                <span style="font-size: 11px; font-family: monospace; color: #EF9F27; background: rgba(239, 159, 39, 0.12); border: 1px solid rgba(239, 159, 39, 0.35); padding: 2px 6px; border-radius: 4px;">search-hub-</span>
-              </div>
-              <p style="font-size: 14px; color: var(--pre-muted); line-height: 1.5; margin-bottom: 12px;">
-                Universal developer search hub indexing multi-source documentation with low-latency in-memory BM25 lexical search and token-bucket debouncing.
-              </p>
-              <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; font-size: 11px; font-family: monospace;">
-                <span style="color: #EF9F27; border: 1px solid rgba(239,159,39,0.4); padding: 2px 6px; border-radius: 4px;">TypeScript</span>
-                <span style="color: #a1a1aa; border: 1px solid #3f3f46; padding: 2px 6px; border-radius: 4px;">Next.js 15</span>
-                <span style="color: #71717a; border: 1px solid #27272a; padding: 2px 6px; border-radius: 4px;">BM25 Engine</span>
-                <span style="color: #71717a; border: 1px solid #27272a; padding: 2px 6px; border-radius: 4px;">Web Workers</span>
-              </div>
-              <div style="display: flex; gap: 12px; align-items: center;">
-                <a href="https://github.com/santoshkumarvvv/search-hub-" style="color: #EF9F27; font-size: 13px; font-weight: 700; text-decoration: underline;" target="_blank" rel="noopener noreferrer" data-en="View Source →" data-hi="सोर्स कोड देखें →">View Source &rarr;</a>
-                <a href="https://github.com/santoshkumarvvv/search-hub-" style="color: var(--pre-muted); font-size: 13px; text-decoration: underline;" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
-              </div>
-            </article>
-
-            <!-- dev-showcase -->
-            <article style="background: var(--pre-surface); border: 1px solid var(--pre-border); padding: 24px; border-radius: 12px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                <h3 style="font-size: 18px; color: var(--pre-text); margin: 0;">Dev Showcase Mobile Engine</h3>
-                <span style="font-size: 11px; font-family: monospace; color: #EF9F27; background: rgba(239, 159, 39, 0.12); border: 1px solid rgba(239, 159, 39, 0.35); padding: 2px 6px; border-radius: 4px;">dev-showcase</span>
-              </div>
-              <p style="font-size: 14px; color: var(--pre-muted); line-height: 1.5; margin-bottom: 12px;">
-                Native Flutter mobile platform architected with Domain-Driven Design (DDD), Clean Architecture, Riverpod state, and automated CI/CD.
-              </p>
-              <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; font-size: 11px; font-family: monospace;">
-                <span style="color: #EF9F27; border: 1px solid rgba(239,159,39,0.4); padding: 2px 6px; border-radius: 4px;">Dart</span>
-                <span style="color: #a1a1aa; border: 1px solid #3f3f46; padding: 2px 6px; border-radius: 4px;">Flutter</span>
-                <span style="color: #a1a1aa; border: 1px solid #3f3f46; padding: 2px 6px; border-radius: 4px;">Riverpod</span>
-                <span style="color: #71717a; border: 1px solid #27272a; padding: 2px 6px; border-radius: 4px;">Clean Architecture</span>
-              </div>
-              <div style="display: flex; gap: 12px; align-items: center;">
-                <a href="https://github.com/santoshkumarvvv/dev-showcase#architecture" style="color: #EF9F27; font-size: 13px; font-weight: 700; text-decoration: underline;" target="_blank" rel="noopener noreferrer">Architecture Specs &rarr;</a>
-                <a href="https://github.com/santoshkumarvvv/dev-showcase" style="color: var(--pre-muted); font-size: 13px; text-decoration: underline;" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
-              </div>
-            </article>
-
-            <!-- search-hub-app -->
-            <article style="background: var(--pre-surface); border: 1px solid var(--pre-border); padding: 24px; border-radius: 12px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                <h3 style="font-size: 18px; color: var(--pre-text); margin: 0;">SearchHub Mobile Client</h3>
-                <span style="font-size: 11px; font-family: monospace; color: #EF9F27; background: rgba(239, 159, 39, 0.12); border: 1px solid rgba(239, 159, 39, 0.35); padding: 2px 6px; border-radius: 4px;">search-hub-app</span>
-              </div>
-              <p style="font-size: 14px; color: var(--pre-muted); line-height: 1.5; margin-bottom: 12px;">
-                Cross-platform native mobile client companion featuring local inverted index caching, SQLite storage, and instant offline autocomplete.
-              </p>
-              <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; font-size: 11px; font-family: monospace;">
-                <span style="color: #EF9F27; border: 1px solid rgba(239,159,39,0.4); padding: 2px 6px; border-radius: 4px;">Dart</span>
-                <span style="color: #a1a1aa; border: 1px solid #3f3f46; padding: 2px 6px; border-radius: 4px;">Flutter</span>
-                <span style="color: #71717a; border: 1px solid #27272a; padding: 2px 6px; border-radius: 4px;">SQLite</span>
-                <span style="color: #71717a; border: 1px solid #27272a; padding: 2px 6px; border-radius: 4px;">Offline Cache</span>
-              </div>
-              <div style="display: flex; gap: 12px; align-items: center;">
-                <a href="https://github.com/santoshkumarvvv/search-hub-app#readme" style="color: #EF9F27; font-size: 13px; font-weight: 700; text-decoration: underline;" target="_blank" rel="noopener noreferrer">Mobile Specs &rarr;</a>
-                <a href="https://github.com/santoshkumarvvv/search-hub-app" style="color: var(--pre-muted); font-size: 13px; text-decoration: underline;" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
-              </div>
-            </article>
-
-            <!-- santoshkumarvvv -->
-            <article style="background: var(--pre-surface); border: 1px solid var(--pre-border); padding: 24px; border-radius: 12px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                <h3 style="font-size: 18px; color: var(--pre-text); margin: 0;">Systems Command Hub</h3>
-                <span style="font-size: 11px; font-family: monospace; color: #EF9F27; background: rgba(239, 159, 39, 0.12); border: 1px solid rgba(239, 159, 39, 0.35); padding: 2px 6px; border-radius: 4px;">santoshkumarvvv</span>
-              </div>
-              <p style="font-size: 14px; color: var(--pre-muted); line-height: 1.5; margin-bottom: 12px;">
-                Interactive Systems Command Hub, Architecture Simulator, Scrypt KDF cryptographic verification, and automated GitHub telemetry.
-              </p>
-              <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; font-size: 11px; font-family: monospace;">
-                <span style="color: #EF9F27; border: 1px solid rgba(239,159,39,0.4); padding: 2px 6px; border-radius: 4px;">TypeScript</span>
-                <span style="color: #a1a1aa; border: 1px solid #3f3f46; padding: 2px 6px; border-radius: 4px;">React 19</span>
-                <span style="color: #71717a; border: 1px solid #27272a; padding: 2px 6px; border-radius: 4px;">Scrypt KDF</span>
-                <span style="color: #71717a; border: 1px solid #27272a; padding: 2px 6px; border-radius: 4px;">PWA</span>
-              </div>
-              <div style="display: flex; gap: 12px; align-items: center;">
-                <a href="https://santoshkumarvvv.github.io/" style="color: #EF9F27; font-size: 13px; font-weight: 700; text-decoration: underline;">View Portfolio Hub &rarr;</a>
-                <a href="https://github.com/santoshkumarvvv/santoshkumarvvv" style="color: var(--pre-muted); font-size: 13px; text-decoration: underline;" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <!-- Contact Section for Crawlers & Non-JavaScript Users -->
-        <section id="contact" style="margin-bottom: 48px; background: var(--pre-bg); border: 1px solid var(--pre-border); padding: 32px; border-radius: 14px;">
-<div style="display: flex; flex-direction: column; gap: 24px;">
-            <div>
-              <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; padding: 4px 12px; border-radius: 9999px; background: var(--pre-surface); border: 1px solid rgba(239, 159, 39, 0.4); font-size: 12px; font-weight: 600; color: #EF9F27;">
-                <span>DIRECT COMMS · संपर्क करें</span>
-              </div>
-              <h2 style="font-size: 26px; font-weight: 800; color: var(--pre-text); margin-bottom: 8px;" data-en="Direct Contact & Engineering Inquiries" data-hi="सीधा संपर्क एवं तकनीकी परामर्श">Direct Contact &amp; Engineering Inquiries</h2>
-              <p style="font-size: 14px; color: var(--pre-muted); line-height: 1.6; max-width: 640px;" data-en="Reach out directly for systems engineering consulting, software architect inquiries, or technical collaboration. Submissions are delivered directly to kumasantosh947@gmail.com." data-hi="सिस्टम्स इंजीनियरिंग परामर्श, सॉफ्टवेयर आर्किटेक्चर या तकनीकी सहयोग के लिए सीधे संपर्क करें। संदेश सीधे kumasantosh947@gmail.com पर भेजे जाते हैं।">
-                Reach out directly for systems engineering consulting, software architect inquiries, or technical collaboration. Submissions are delivered directly to <span style="color:#EF9F27; font-family:monospace;">kumasantosh947@gmail.com</span>.
-              </p>
-            </div>
-
-            <!-- Complete Working HTML Form for Web3Forms -->
-            <form action="https://api.web3forms.com/submit" method="POST" style="display: flex; flex-direction: column; gap: 16px; max-width: 680px; background: var(--pre-surface); padding: 24px; border-radius: 12px; border: 1px solid var(--pre-border);">
-              <!-- Web3Forms Access Key -->
-              <input type="hidden" name="access_key" value="071771e4-7323-4b6b" />
-              <input type="hidden" name="to_email" value="kumasantosh947@gmail.com" />
-              <input type="hidden" name="subject" value="Inquiry from santoshkumarvvv.github.io" />
-
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
-                <div style="display: flex; flex-direction: column; gap: 6px;">
-                  <label for="contact-name" style="font-size: 12px; font-weight: 600; color: var(--pre-text);" data-en="Your Name" data-hi="आपका नाम">Your Name</label>
-                  <input type="text" id="contact-name" name="name" placeholder="e.g. Alex Chen" required style="padding: 10px 14px; border-radius: 8px; border: 1px solid var(--pre-border); background: var(--pre-bg); color: var(--pre-text); font-size: 13px;" />
-                </div>
-                <div style="display: flex; flex-direction: column; gap: 6px;">
-                  <label for="contact-email" style="font-size: 12px; font-weight: 600; color: var(--pre-text);" data-en="Your Email *" data-hi="आपका ईमेल *">Your Email <span style="color: #EF9F27;">*</span></label>
-                  <input type="email" id="contact-email" name="email" placeholder="alex@company.com" required style="padding: 10px 14px; border-radius: 8px; border: 1px solid var(--pre-border); background: var(--pre-bg); color: var(--pre-text); font-size: 13px;" />
-                </div>
-              </div>
-
-              <div style="display: flex; flex-direction: column; gap: 6px;">
-                <label for="contact-subject" style="font-size: 12px; font-weight: 600; color: var(--pre-text);" data-en="Subject / Project Scope" data-hi="विषय / प्रोजेक्ट डोमेन">Subject / Project Scope</label>
-                <input type="text" id="contact-subject" name="subject" placeholder="Search Engine Architecture, Mobile Engineering, etc." style="padding: 10px 14px; border-radius: 8px; border: 1px solid var(--pre-border); background: var(--pre-bg); color: var(--pre-text); font-size: 13px;" />
-              </div>
-
-              <div style="display: flex; flex-direction: column; gap: 6px;">
-                <label for="contact-message" style="font-size: 12px; font-weight: 600; color: var(--pre-text);" data-en="Message *" data-hi="संदेश *">Message <span style="color: #EF9F27;">*</span></label>
-                <textarea id="contact-message" name="message" rows="4" placeholder="Describe your inquiry, project scope, or architecture question..." required style="padding: 10px 14px; border-radius: 8px; border: 1px solid var(--pre-border); background: var(--pre-bg); color: var(--pre-text); font-size: 13px; resize: vertical;"></textarea>
-              </div>
-
-              <!-- Success & Error Message Feedback Containers -->
-              <div id="contact-success" style="display: none; padding: 12px 16px; border-radius: 8px; background: var(--pre-bg); border: 1px solid #EF9F27; color: #EF9F27; font-size: 13px;">
-                <strong>धन्यवाद!</strong> Your message has been sent successfully. Santosh will reply to your email shortly.
-              </div>
-              <div id="contact-error" style="display: none; padding: 12px 16px; border-radius: 8px; background: var(--pre-bg); border: 1px solid #EF9F27; color: #EF9F27; font-size: 13px;">
-                Message could not be sent. Please try again.
-              </div>
-
-              <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 6px;">
-                <button type="submit" style="background: #EF9F27; color: #09090b; padding: 12px 28px; border-radius: 8px; font-weight: 700; font-size: 13px; border: none; cursor: pointer;" data-en="Send Message Now →" data-hi="अभी संदेश भेजें →">
-                  Send Message Now &rarr;
-                </button>
-                <a href="mailto:kumasantosh947@gmail.com" style="color: var(--pre-muted); font-size: 12px; text-decoration: underline;">
-                  Or click to open native email client
-                </a>
-              </div>
-            </form>
-          </div>
-        </section>
-      </main>
-
-      <!-- Prerender Visible Footer with All Social Links & Resume Link -->
-      <footer style="max-width: 1200px; margin: 0 auto; padding: 32px 24px; border-top: 1px solid var(--pre-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--pre-muted); background: var(--pre-bg);">
-        <div data-en="Santosh Kumar (@santoshkumarvvv) · Systems & Application Engineering" data-hi="संतोष कुमार (@santoshkumarvvv) · सिस्टम्स और एप्लिकेशन इंजीनियरिंग">
-          <strong style="color: var(--pre-text);">Santosh Kumar (@santoshkumarvvv)</strong> · Systems &amp; Application Engineering
-        </div>
-        <div style="display: flex; gap: 18px; align-items: center; flex-wrap: wrap;">
-          <a href="https://github.com/santoshkumarvvv" target="_blank" rel="noopener noreferrer" style="color: var(--pre-muted); text-decoration: none;">GitHub</a>
-          <a href="https://x.com/SantoshKum86044" target="_blank" rel="noopener noreferrer" style="color: var(--pre-muted); text-decoration: none;">X (@SantoshKum86044)</a>
-          <a href="https://www.linkedin.com/in/santosh-kumar-66a9392b2/" target="_blank" rel="noopener noreferrer" style="color: var(--pre-muted); text-decoration: none;">LinkedIn</a>
-          <a href="./assets/Santosh_Kumar_Resume.pdf" download="Santosh_Kumar_Resume.pdf" style="color: #EF9F27; text-decoration: none; font-weight: 600;" data-en="Resume (PDF)" data-hi="रिज्यूमे (PDF)">Resume (PDF)</a>
-          <a href="mailto:kumasantosh947@gmail.com" style="color: var(--pre-muted); text-decoration: none;" data-en="Contact Email" data-hi="संपर्क ईमेल">Contact Email</a>
-          <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" style="color: #71717a; font-size: 11px; text-decoration: none;" data-en="Deployed on Vercel" data-hi="Vercel पर डिप्लॉय किया गया">Deployed on Vercel</a>
-        </div>
-      </footer>
-    </div>
-    <!-- Apply stored Hindi/English language and theme immediately to prerendered DOM before first paint -->
-    <script>
-      try {
-        if (window.__applyPortfolioTheme) {
-          var sTheme = localStorage.getItem('theme');
-          window.__applyPortfolioTheme(sTheme ? sTheme === 'dark' : true);
-        }
-        if (window.__applyPortfolioLang) {
-          window.__applyPortfolioLang(localStorage.getItem('lang') || 'en');
-        }
-      } catch (e) {}
-    </script>
-    <!-- Service Worker Registration for Offline App Shell Caching (PWA) -->
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/public/sw.js', { scope: '/' }).catch(function() {
-            return navigator.serviceWorker.register('/public/sw.js');
-          }).catch(function(err) {
-            console.warn('ServiceWorker registration failed: ', err);
-          });
-        });
-      }
-    </script>
-  </body>
-</html>
