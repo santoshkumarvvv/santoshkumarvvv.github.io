@@ -1,12 +1,14 @@
 /**
- * SearchHub SearchEmbed v1.0.0 — Zero-Dependency In-Browser Instant Search Widget
+ * SearchHub SearchEmbed v1.1.0 — Zero-Dependency In-Browser Instant Search Widget
  * (c) Santosh Kumar (https://github.com/santoshkumarvvv)
  * Distributed under MIT License
- * 
- * In-Memory Lexical Search Algorithm:
+ *
+ * In-Browser Okapi BM25 Search Algorithm:
  * This client-side engine executes directly in-browser with zero database roundtrips.
- * Term-frequency (TF) weighting scores exact title and excerpt matches, paired with
- * bounded Damerau-Levenshtein transposition distance for tokens >= 4 characters.
+ * Okapi BM25 (k1 = 1.2, b = 0.75) with Robertson-Spärck Jones IDF, paired with
+ * bounded Damerau-Levenshtein transposition distance for fuzzy typo tolerance on
+ * tokens >= 4 characters. Scoring is unified with the serverless api/search
+ * endpoint so both engines rank identically.
  */
 (function () {
   'use strict';
@@ -44,26 +46,26 @@
       category: 'Mobile Engine'
     },
     {
-      title: 'Selected Engineering Works & Case Studies",
+      title: 'Selected Engineering Works & Case Studies',
       url: 'https://santoshkumarvvv.github.io/#works',
       excerpt: 'Deep-dive into Scrypt KDF cryptographic authentication, inverted index caches, and memory budgets.',
       category: 'Works'
     },
     {
       title: 'SearchEmbed — 1-Line In-Browser Search Widget',
-      url: 'https://santoshkumarvvv.github.io/#architecture',
+      url: 'https://santoshkumarvvv.github.io/#architecture",
       excerpt: '14.8KB vanilla JS standalone search modal replacing heavy Algolia and Elasticsearch setups.',
       category: 'Architecture'
     },
     {
       title: 'Official Systems Engineering Resume (PDF)',
-      url: 'https://santoshkumarvvv.github.io/assets/Santosh_Kumar_Resume.pdf',
+      url: 'https://santoshkumarvvv.github.io/assets/Santosh_Kumar_Resume.pdf",
       excerpt: 'Verified technical resume covering distributed systems, low-latency algorithms, and production stack.',
       category: 'Credentials'
     },
     {
       title: 'Engineering Inquiries & Direct Contact',
-      url: 'mailto:kumasantosh947@gmail.com',
+      url: 'mailto:kumasantosh947@gmail.com",
       excerpt: 'Direct communication channel for systems engineering consulting, hiring, and open-source inquiries.',
       category: 'Contact'
     }
@@ -126,38 +128,85 @@
     return matrix[al][bl];
   }
 
-  // --- In-Memory BM25 Term Matching & Scoring ---
-  // Limits fuzzy matching to tokens with length >= 4 to eliminate noisy short-token matches
+  // --- Tokenize (mirrors server-side api/search tokenize) ---
+  function tokenize(text) {
+    return text
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, ' ')
+      .split(/\s+/)
+      .filter((token) => token.length > 1);
+  }
+
+  // --- In-Memory Okapi BM25 Term Matching & Scoring ---
+  // Unified with serverless api/search/route.ts: same k1, b, IDF, TF saturation.
+  // Damerau-Levenshtein retained as a fuzzy boost layer for single-typo tokens.
   function executeSearch(query) {
     const q = query.trim().toLowerCase();
     if (!q) return [];
-    const queryTokens = q.split(/\s+/).filter(Boolean);
+    const queryTokens = tokenize(q);
+    if (queryTokens.length === 0) return [];
 
-    const scored = searchIndex.map(doc => {
-      let score = 0;
+    const k1 = 1.2;
+    const b = 0.75;
+    const N = searchIndex.length;
+
+    const docTokensList = searchIndex.map((doc) =>
+      tokenize(`${doc.title} ${doc.excerpt || ''}`)
+    );
+    const totalTokens = docTokensList.reduce((acc, tokens) => acc + tokens.length, 0);
+    const avgdl = totalTokens / N;
+
+    const scored = searchIndex.map((doc, i) => {
+      const docTokens = docTokensList[i];
+      const dl = docTokens.length;
+      let totalScore = 0;
       const titleLower = doc.title.toLowerCase();
-      const excerptLower = (doc.excerpt || '').toLowerCase();
-      const combined = `${titleLower} ${excerptLower}`;
 
-      for (const token of queryTokens) {
-        // Exact substring matches get highest weight
-        if (titleLower.includes(token)) score += 10;
-        if (excerptLower.includes(token)) score += 4;
-
-        // Word-level token match
-        const words = combined.split(/\W+/).filter(Boolean);
-        for (const w of words) {
-          if (w === token) {
-            score += 5;
-          } else if (token.length >= 4 && Math.abs(w.length - token.length) <= 1) {
-            // Cap fuzzy matching strictly to tokens >= 4 characters
-            const dist = damerauLevenshtein(w, token);
-            if (dist === 1) score += 2.5; // Single typo match
+      for (const qToken of queryTokens) {
+        // Document frequency (exact or prefix match)
+        let df = 0;
+        for (const tokens of docTokensList) {
+          if (tokens.some((t) => t === qToken || t.includes(qToken))) {
+            df += 1;
           }
         }
+        if (df === 0) continue;
+
+        // Term frequency
+        let tf = 0;
+        for (const t of docTokens) {
+          if (t === qToken) {
+            tf += 1.0;
+          } else if (t.includes(qToken)) {
+            tf += 0.5;
+          }
+        }
+        if (tf === 0) continue;
+
+        // Boost title matches
+        if (titleLower.includes(qToken)) {
+          tf += 1.5;
+        }
+
+        // Fuzzy boost: Damerau-Levenshtein distance 1 on tokens >= 4 chars
+        if (qToken.length >= 4) {
+          for (const t of docTokens) {
+            if (t !== qToken && Math.abs(t.length - qToken.length) <= 1) {
+              if (damerauLevenshtein(t, qToken) === 1) {
+                tf += 0.5;
+              }
+            }
+          }
+        }
+
+        // Robertson-Spärck Jones IDF
+        const idf = Math.log(1 + (N - df + 0.5) / (df + 0.5));
+        const numerator = tf * (k1 + 1);
+        const denominator = tf + k1 * (1 - b + b * (dl / avgdl));
+        totalScore += idf * (numerator / denominator);
       }
 
-      return { doc, score };
+      return { doc, score: totalScore };
     });
 
     return scored
