@@ -11,21 +11,21 @@
   <script>
     (function() {
       try {
-        var storedTheme = localStorage.getItem('theme');
+        var storedTheme = localStorage.getItem('theme);
         var isDark = storedTheme ? storedTheme === 'dark' : true;
         if (isDark) {
-          document.documentElement.classList.add('dark');
+          document.documentElement.classList.add('dark);
         } else {
-          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.remove('dark);
         }
-        var lang = localStorage.getItem('lang');
+        var lang = localStorage.getItem('lang);
         if (lang === 'hi') {
-          document.documentElement.setAttribute('lang', 'hi');
+          document.documentElement.setAttribute('lang', 'hi);
         } else {
-          document.documentElement.setAttribute('lang', 'en');
+          document.documentElement.setAttribute('lang', 'en);
         }
-      } catch (e) {}
-    })();
+      } catch (e) {})
+    })());
   </script>
   <style>
     :root {
@@ -118,7 +118,7 @@
   <h1>Requested Node Offline</h1>
   <div class="fun-msg" data-en="This page got lost in the search index." data-hi="ये पेज सर्च इंडेक्स में खो गया.">This page got lost in the search index. · ये पेज सर्च इंडेक्स में खो गया.</div>
   <p>The path you navigated to does not exist on this cluster. Return to the primary systems engineering hub to explore live search architectures and selected works.</p>
-  <a href="https://vvv-portfolio.vercel.app" class="btn" data-en="Back to Home" data-hi="होम पर वापस">Back to Home / होम पर वापस</a>
+  <a href="https://santoshkumarvvv.github.io/" class="btn" data-en="Back to Home" data-hi="होम पर वापस">Back to Home / होम पर वापस</a>
   <script>
     (function() {
       try {
@@ -126,11 +126,11 @@
         var nodes = document.querySelectorAll('[data-en][data-hi]');
         for (var i = 0; i < nodes.length; i++) {
           var el = nodes[i];
-          var txt = lang === 'hi' ? el.getAttribute('data-hi') : el.getAttribute('data-en');
+          var txt = lang === 'hi' ? el.getAttribute('data-hi') : el.getAttribute('data-en);
           if (txt) el.textContent = txt;
         }
-      } catch (e) {}
-    })();
+      } catch (e) {})
+    })());
   </script>
 </body>
 </html>
