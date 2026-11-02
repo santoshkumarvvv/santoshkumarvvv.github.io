@@ -8,6 +8,9 @@
  * - Hardcoded mini index of 10 real documentation & architecture records (title, url, snippet, score)
  * - Rate limiting: 10 requests per minute per IP using an in-memory Map with timestamps
  * - Strict CORS headers allowing https://santoshkumarvvv.github.io
+ *
+ * NOTE: This endpoint only works on Vercel (or compatible serverless platforms).
+ * GitHub Pages serves static files only and will return 404 for /api/* routes.
  */
 
 export interface SearchDocument {
@@ -24,7 +27,7 @@ const MINI_INDEX: SearchDocument[] = [
   {
     id: 'doc-1',
     title: 'SearchHub Federated BM25 Search Engine',
-    url: 'https://vvv-portfolio.vercel.app',
+    url: 'https://santoshkumarvvv.github.io/',
     snippet: 'Universal developer search hub with low-latency in-memory BM25 lexical search and Damerau-Levenshtein typo tolerance.',
     score: 1.0,
     keywords: 'searchhub federated bm25 search engine typescript nextjs inverted index lexical ranking typo tolerance'
@@ -35,7 +38,7 @@ const MINI_INDEX: SearchDocument[] = [
     url: 'https://santoshkumarvvv.github.io/#architecture',
     snippet: '14.8KB zero-dependency vanilla JavaScript search modal widget replacing heavy Algolia and Elasticsearch setups.',
     score: 1.0,
-    keywords: 'searchembed widget embed.js modal vanilla javascript algolia elasticsearch replacement client-side search'
+    keywords: 'searchembed widget embed.js modal vanilla javascript algolia eslint replacement client-side search'
   },
   {
     id: 'doc-3',
@@ -72,7 +75,7 @@ const MINI_INDEX: SearchDocument[] = [
   {
     id: 'doc-7',
     title: 'Santosh Kumar — Systems Engineering Command Hub',
-    url: 'https://vvv-portfolio.vercel.app',
+    url: 'https://santoshkumarvvv.github.io/',
     snippet: 'Interactive systems architecture portfolio, live GitHub repository telemetry, and BM25 query sandbox.',
     score: 1.0,
     keywords: 'santosh kumar santoshkumarvvv portfolio systems architect react 19 vite tailwind css github pages vercel'
@@ -104,6 +107,8 @@ const MINI_INDEX: SearchDocument[] = [
 ];
 
 // Rate Limiting Store: Map<ip, timestamp[]>
+// WARNING: This in-memory Map is per-instance. On Vercel serverless, each cold start
+// resets it, so limits are best-effort, not strictly global per IP.
 const rateLimitMap = new Map<string, number[]>();
 const WINDOW_MS = 60 * 1000; // 1 minute
 const MAX_REQUESTS = 10;     // 10 requests per minute per IP
@@ -142,7 +147,7 @@ function tokenize(text: string): string[] {
 }
 
 // Compute in-memory Okapi BM25 scores across the 10-document mini index
-function runBM25Search(query: string): Array<{ title: string; url: string; snippet: string; score: number }> {
+function runBM25Search(query: string): Array<{ title: string; url: string; snippet: string; score: number}> {
   const queryTokens = tokenize(query);
   if (queryTokens.length === 0) {
     return MINI_INDEX.map(({ title, url, snippet, score }) => ({ title, url, snippet, score }));
@@ -159,7 +164,7 @@ function runBM25Search(query: string): Array<{ title: string; url: string; snipp
   const totalTokens = docTokensList.reduce((acc, tokens) => acc + tokens.length, 0);
   const avgdl = totalTokens / N;
 
-  const scoredResults: Array<{ title: string; url: string; snippet: string; score: number }> = [];
+  const scoredResults: Array<{ title: string; url: string; snippet: string; score: number}> = [];
 
   for (let i = 0; i < N; i++) {
     const doc = MINI_INDEX[i];
@@ -245,7 +250,7 @@ export async function OPTIONS(request?: Request): Promise<Response> {
 
 export async function GET(request: Request): Promise<Response> {
   // Determine client IP from standard proxy headers
-  const forwardedFor = request.headers.get('x-forwarded-for');
+  const forwardedFor = request.headers.get('x-forwarded-for);
   const clientIp = forwardedFor
     ? forwardedFor.split(',')[0].trim()
     : request.headers.get('x-real-ip') || '127.0.0.1';

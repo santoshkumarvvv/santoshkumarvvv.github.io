@@ -2,7 +2,8 @@
 
 Systems & Search Engine Architect building low-latency in-memory BM25 lexical search systems, deterministic TypeScript & React 19 interfaces, Scrypt KDF cryptographic authentication, and native Flutter mobile applications.
 
-- **Portfolio Repository:** [https://github.com/santoshkumarvvv/santoshkumarvvv.github.io](https://github.com/santoshkumarvvv/santoshkumarvvv.github.io) *(Live demo URL will be added after Vercel deployment)*
+- **Portfolio (Live):** [https://santoshkumarvvv.github.io/](https://santoshkumarvvv.github.io/) *(GitHub Pages — static site)*
+- **Portfolio (Vercel, if redeployed):** [https://vvv-portfolio.vercel.app](https://vvv-portfolio.vercel.app) *(serverless API routes only work here)*
 - **SearchHub Engine Repository:** [https://github.com/santoshkumarvvv/search-hub-](https://github.com/santoshkumarvvv/search-hub-)
 - **Dev Showcase CI/CD Repository:** [https://github.com/santoshkumarvvv/dev-showcase](https://github.com/santoshkumarvvv/dev-showcase)
 
@@ -23,7 +24,7 @@ Systems & Search Engine Architect building low-latency in-memory BM25 lexical se
 | **[Search Hub Engine](https://github.com/santoshkumarvvv/search-hub-)** | `TypeScript` · `Next.js 15` · `Tailwind CSS` | Federated multi-index query router with token-bucket debouncing and low-latency in-memory BM25 lexical ranking. | [View Source →](https://github.com/santoshkumarvvv/search-hub-) |
 | **[Dev Showcase Blueprint](https://github.com/santoshkumarvvv/dev-showcase)** | `Dart` · `Flutter` · `GitHub Actions` | Modular domain-driven engineering blueprint with automated AST & static lint verification and CI matrix builds. | [View Source →](https://github.com/santoshkumarvvv/dev-showcase) |
 | **[Search Hub Mobile Client](https://github.com/santoshkumarvvv/search-hub-app)** | `Dart` · `Flutter` · `SQLite` | Cross-platform companion client and declarative cloud deployment configuration (`vercel.json` + `render.yaml`). | [View Source →](https://github.com/santoshkumarvvv/search-hub-app) |
-| **[Systems Command Hub](https://github.com/santoshkumarvvv/santoshkumarvvv.github.io)** | `React 19` · `TypeScript` · `Tailwind v4` | Interactive portfolio web application, architecture simulator, `⌘K` command palette, and GitHub telemetry sync. *(Live demo URL will be added after Vercel deployment)* | [View Source →](https://github.com/santoshkumarvvv/santoshkumarvvv.github.io) |
+| **[Systems Command Hub](https://github.com/santoshkumarvvv/santoshkumarvvv.github.io)** | `React 19` · `TypeScript` · `Tailwind v4` | Interactive portfolio web application, architecture simulator, `⌘K` command palette, and GitHub telemetry sync. Live at [santoshkumarvvv.github.io](https://santoshkumarvvv.github.io/). | [View Source →](https://github.com/santoshkumarvvv/santoshkumarvvv.github.io) |
 
 ---
 
@@ -38,9 +39,13 @@ This repository houses a **React 19 + TypeScript + Vite + Tailwind CSS v4** web 
 
 ```text
 santoshkumarvvv.github.io/
+├── .github/
+│   └── workflows/
+│       └── codeql.yml             # CodeQL static analysis
 ├── api/
-│   └── search/
-│       └── route.ts               # Zero-dependency serverless Okapi BM25 search endpoint
+│   ├── og/route.ts                # Dynamic OG image (Vercel only)
+│   ├── search/route.ts            # Zero-dependency serverless Okapi BM25 search endpoint (Vercel only)
+│   └── stats/route.ts             # GitHub telemetry stats endpoint (Vercel only)
 ├── public/
 │   └── sw.js                      # Offline-first Service Worker source
 ├── src/
@@ -57,6 +62,7 @@ santoshkumarvvv.github.io/
 │   ├── App.tsx                        # Main application layout & live GitHub API synchronizer
 │   ├── index.css                      # Tailwind CSS v4 configuration & custom dark variant
 │   └── main.tsx                       # Application entry point & Latin font subset imports
+├── embed.js                           # Standalone in-browser search widget (now Okapi BM25)
 ├── index.html
 ├── package.json
 ├── tsconfig.json
@@ -103,11 +109,13 @@ Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' h
 
 ### 06 · Deploying the Serverless BM25 Search API (`api/search/route.ts`) to Vercel
 
-This repository includes a self-contained, zero-dependency serverless BM25 search endpoint at [`api/search/route.ts`](./api/search/route.ts). It implements:
+This repository includes a self-contained, zero-dependency serverless BM25 search endpoint at `api/search/route.ts`. It implements:
 
 - **HTTP GET `?q=` Query Handler**: Tokenizes queries and ranks a 10-document engineering index using Okapi BM25 (`k1 = 1.2`, `b = 0.75`) with Robertson-Spärck Jones IDF.
-- **In-Memory Rate Limiting**: Enforces 10 requests per minute per client IP using a sliding-window `Map<string, number[]>`.
-- **Strict CORS Policy**: Allows cross-origin requests from `https://santoshkumarvvv.github.io`.
+- **In-Memory Rate Limiting**: Enforces 10 requests per minute per client IP using a sliding-window `Map<string, number[]>` (best-effort on serverless — per-instance, not globally shared).
+- **Strict CORS Policy**: Allows cross-origin requests from `https://santoshkumarvvv.github.io` and `https://vvv-portfolio.vercel.app`.
+
+**Important:** `/api/*` routes do **not** work on GitHub Pages (static hosting only, returns 404). These endpoints require a Vercel (or equivalent serverless) deployment. The client-side `embed.js` widget works everywhere because it runs entirely in-browser.
 
 #### Step-by-Step Deployment to Your Vercel Project (`search-hub-`)
 
